@@ -3,15 +3,28 @@
 #include <QMessageBox>
 #include "identity.h"
 
+#include <QDebug>
+#include <db_mannager.h>
+
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    DbManager db("database.db");
+    if(!db.isOpen()){
+        qDebug()<<"Database not opening";
+    }else{
+        db.createTable();   // Creates a table if it doens't exist. Otherwise, it will use existing table.
+        db.printAllUsers();
+    }
 }
 
 MainWindow::~MainWindow()
 {
+
     delete ui;
 }
 

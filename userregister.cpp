@@ -1,6 +1,9 @@
 #include "userregister.h"
 #include "ui_userregister.h"
 #include "qmessagebox.h"
+#include "QDebug"
+#include "db_mannager.h"
+
 UserRegister::UserRegister(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::UserRegister)
@@ -49,6 +52,16 @@ void UserRegister::on_pushButton_clicked()
             QMessageBox :: information (this, "Error!!", "Password did't match please try again");
         }else{
             QMessageBox :: information (this, "Log In", "Success");
+
+            //add user name to the database
+            DbManager db("database.db");
+            if(!db.isOpen()){
+                qDebug()<<"Database not opening";
+            }else{
+                db.createTable();   // Creates a table if it doens't exist. Otherwise, it will use existing table.
+                db.addUser(fName,pass1);
+            }
+
         }
     }
     //QString message = fName + lName + email;

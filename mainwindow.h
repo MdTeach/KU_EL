@@ -5,6 +5,12 @@
 #include <admindialog.h>
 #include <userregister.h>
 
+#include <QtSql>
+#include <QDebug>
+#include <QFileInfo>
+
+
+
 namespace Ui {
 class MainWindow;
 }

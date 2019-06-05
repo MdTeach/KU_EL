@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -26,12 +26,14 @@ CONFIG += c++11
 
 SOURCES += \
         admindialog.cpp \
+        db_mannager.cpp \
         main.cpp \
         mainwindow.cpp \
         userregister.cpp
 
 HEADERS += \
         admindialog.h \
+        db_mannager.h \
         identity.h \
         mainwindow.h \
         userregister.h
