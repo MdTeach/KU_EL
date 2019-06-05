@@ -10,7 +10,6 @@
 #include <QFileInfo>
 
 
-
 namespace Ui {
 class MainWindow;
 }

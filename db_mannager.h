@@ -74,6 +74,13 @@ public:
      */
     bool removeAllUsers();
 
+
+    /**
+     * @brief Authenticate the users via user name and password
+     * @return db_primary_key - , 0 - log in failed
+     */
+    int userLogIn(QString name, QString pass);
+
 private:
     QSqlDatabase m_db;
 };

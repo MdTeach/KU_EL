@@ -55,9 +55,9 @@ bool DbManager::addUser(const QString& name, const QString& pass)
     if (!name.isEmpty())
     {
         QSqlQuery queryAdd;
-        queryAdd.prepare("INSERT INTO user (name, pass) VALUES (:name, :pass)");
+        queryAdd.prepare("INSERT INTO user(name, pass) VALUES (:name, :pass)");
         queryAdd.bindValue(":name", name);
-        queryAdd.bindValue(":pass", pass);
+         queryAdd.bindValue(":pass", pass);
         if(queryAdd.exec())
         {
             success = true;
@@ -139,7 +139,7 @@ bool DbManager::removeAllUsers()
     bool success = false;
 
     QSqlQuery removeQuery;
-    removeQuery.prepare("DELETE FROM people");
+    removeQuery.prepare("DELETE FROM user");
 
     if (removeQuery.exec())
     {
@@ -152,3 +152,4 @@ bool DbManager::removeAllUsers()
 
     return success;
 }
+
