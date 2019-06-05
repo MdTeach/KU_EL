@@ -37,7 +37,7 @@ bool DbManager::createTable()
     bool success = false;
 
     QSqlQuery query;
-    query.prepare("CREATE TABLE user(id INTEGER PRIMARY KEY, name TEXT);");
+    query.prepare("CREATE TABLE user(id INTEGER PRIMARY KEY, name TEXT,pass TEXT);");
 
     if (!query.exec())
     {
@@ -55,9 +55,9 @@ bool DbManager::addUser(const QString& name, const QString& pass)
     if (!name.isEmpty())
     {
         QSqlQuery queryAdd;
-        queryAdd.prepare("INSERT INTO user (name) VALUES (:name)");
+        queryAdd.prepare("INSERT INTO user (name, pass) VALUES (:name, :pass)");
         queryAdd.bindValue(":name", name);
-
+        queryAdd.bindValue(":pass", pass);
         if(queryAdd.exec())
         {
             success = true;
