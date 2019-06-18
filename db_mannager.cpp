@@ -153,3 +153,27 @@ bool DbManager::removeAllUsers()
     return success;
 }
 
+bool DbManager::userAuth(const QString &name, const QString &pass)const
+{
+    bool exists = false;
+
+    QSqlQuery checkQuery;
+    checkQuery.prepare("SELECT name FROM user WHERE name = (:name) AND pass = (:pass)");
+    checkQuery.bindValue(":name", name);
+    checkQuery.bindValue(":pass", pass);
+    if (checkQuery.exec())
+    {
+        if (checkQuery.next())
+        {
+            exists = true;
+        }
+    }
+    else
+    {
+        qDebug() << "user exists failed: " << checkQuery.lastError();
+    }
+
+    return exists;
+}
+
+

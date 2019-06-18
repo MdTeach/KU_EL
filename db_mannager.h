@@ -79,7 +79,7 @@ public:
      * @brief Authenticate the users via user name and password
      * @return db_primary_key - , 0 - log in failed
      */
-    int userLogIn(QString name, QString pass);
+    bool userAuth(const QString& name, const QString& pass) const;
 
 private:
     QSqlDatabase m_db;
