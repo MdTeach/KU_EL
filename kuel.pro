@@ -29,6 +29,7 @@ SOURCES += \
         db_mannager.cpp \
         main.cpp \
         mainwindow.cpp \
+        temp.cpp \
         userregister.cpp
 
 HEADERS += \
