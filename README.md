@@ -3,3 +3,4 @@ First year C++ project using Qt
 To run the program install Qt and open kuel.pro file
 :D
 :D
+:D
