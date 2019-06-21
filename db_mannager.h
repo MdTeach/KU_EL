@@ -43,29 +43,19 @@ public:
 
     /**
      * @brief Add user data to db
-     * @param name - name of user to add
+     * @param email - email of user to add. email is unique
      * @param password - password of user to add
      * @return true - person added successfully, false - person not added
      */
     bool addUser(const QString& email,const QString& password);
 
     /**
-     * @brief Remove person data from db
-     * @param name - name of person to remove.
-     * @return true - person removed successfully, false - person not removed
+     * @brief Remove users data from db
+     * @param email - email of user to remove.
+     * @return true - user removed successfully, false - user not removed
      */
     bool removeUser(const QString& name);
 
-    /**
-     * @brief Check if person of name "name" exists in db
-     * @param name - name of person to check.
-     * @return true - person exists, false - person does not exist
-     */
-    bool userExists(const QString& name) const;
-
-    /**
-     * @brief Print names of all persons in db
-     */
 
 
     /**
@@ -77,14 +67,14 @@ public:
     void printAllUsers() const;
 
     /**
-     * @brief Remove all persons from db
-     * @return true - all persons removed successfully, false - not removed
+     * @brief Remove all users email from db
+     * @return true - all users removed successfully, false - not removed
      */
     bool removeAllUsers();
 
 
     /**
-     * @brief Authenticate the users via user name and password
+     * @brief Authenticate the users via user email and password
      * @return db_primary_key - , 0 - log in failed
      */
     bool userAuth(const QString& name, const QString& pass) const;
