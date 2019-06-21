@@ -37,7 +37,7 @@ bool DbManager::createTable()
     bool success = false;
 
     QSqlQuery query;
-    query.prepare("CREATE TABLE user(id INTEGER PRIMARY KEY, name TEXT,pass TEXT);");
+    query.prepare("CREATE TABLE user(id INTEGER PRIMARY KEY, email TEXT,pass TEXT);");
 
     if (!query.exec())
     {
@@ -48,32 +48,21 @@ bool DbManager::createTable()
     return success;
 }
 
-bool DbManager::addUser(const QString& name, const QString& pass)
-{
+bool DbManager::addUser(const QString& email, const QString& pass){
     bool success = false;
-
-    if (!name.isEmpty())
-    {
-        QSqlQuery queryAdd;
-        queryAdd.prepare("INSERT INTO user(name, pass) VALUES (:name, :pass)");
-        queryAdd.bindValue(":name", name);
-         queryAdd.bindValue(":pass", pass);
-        if(queryAdd.exec())
-        {
-            success = true;
-        }
-        else
-        {
-            qDebug() << "add user failed: " << queryAdd.lastError();
-        }
+    QSqlQuery queryAdd;
+    queryAdd.prepare("INSERT INTO user(email, pass) VALUES (:email, :pass)");
+    queryAdd.bindValue(":email", email);
+     queryAdd.bindValue(":pass", pass);
+    if(!queryAdd.exec()){
+        qDebug() << "add user failed: " << queryAdd.lastError();
+    }else{
+        success = true;
     }
-    else
-    {
-        qDebug() << "add user failed: name cannot be empty";
-    }
-
     return success;
 }
+
+
 
 bool DbManager::removeUser(const QString& name)
 {
@@ -103,11 +92,11 @@ void DbManager::printAllUsers() const
 {
     qDebug() << "users in db:";
     QSqlQuery query("SELECT * FROM user");
-    int idName = query.record().indexOf("name");
+    int idName = query.record().indexOf("email");
     while (query.next())
     {
-        QString name = query.value(idName).toString();
-        qDebug() << "===" << name;
+        QString email = query.value(idName).toString();
+        qDebug() << "===" << email;
     }
 }
 
@@ -134,6 +123,20 @@ bool DbManager::userExists(const QString& name) const
     return exists;
 }
 
+bool DbManager::emailExists(const QString &email){
+    QSqlQuery checkQuery;
+    checkQuery.prepare("SELECT email FROM user WHERE email = (:email)");
+    checkQuery.bindValue(":email",email);
+    if(checkQuery.exec()){
+        if(checkQuery.next()){
+            return true;
+        }
+    }else{
+        qDebug()<<"does email exist query failed "<<checkQuery.lastError();
+    }
+    return false;
+}
+
 bool DbManager::removeAllUsers()
 {
     bool success = false;
@@ -153,13 +156,13 @@ bool DbManager::removeAllUsers()
     return success;
 }
 
-bool DbManager::userAuth(const QString &name, const QString &pass)const
+bool DbManager::userAuth(const QString &email, const QString &pass)const
 {
     bool exists = false;
 
     QSqlQuery checkQuery;
-    checkQuery.prepare("SELECT name FROM user WHERE name = (:name) AND pass = (:pass)");
-    checkQuery.bindValue(":name", name);
+    checkQuery.prepare("SELECT email FROM user WHERE email = (:email) AND pass = (:pass)");
+    checkQuery.bindValue(":email", email);
     checkQuery.bindValue(":pass", pass);
     if (checkQuery.exec())
     {

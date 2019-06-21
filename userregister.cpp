@@ -24,7 +24,7 @@ bool isEmpty(QString string){
 
 void UserRegister::on_pushButton_clicked()
 {
-    QString fName = ui->Fname->text();
+    QString email = ui->Email->text();
     QString pass1 = ui->Password->text();
 
     //add user name to the database
@@ -33,7 +33,14 @@ void UserRegister::on_pushButton_clicked()
         qDebug()<<"Database not opening";
     }else{
         db.createTable();   // Creates a table if it doens't exist. Otherwise, it will use existing table.
-        db.addUser(fName,pass1);
+        if(db.emailExists(email)){
+            //email already taken :(
+            QMessageBox :: information (this, "Error!!", "Email is already taken try another one");
+        }else{
+            qDebug()<<"Adding"<<email<<pass1;
+            (db.addUser(email,pass1)) ? qDebug()<<"Sucess" :qDebug()<<"Failed";
+        }
+
     }
 
 //    QString fName = ui->Fname->text();

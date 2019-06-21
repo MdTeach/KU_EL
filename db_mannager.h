@@ -47,7 +47,7 @@ public:
      * @param password - password of user to add
      * @return true - person added successfully, false - person not added
      */
-    bool addUser(const QString& name,const QString& password);
+    bool addUser(const QString& email,const QString& password);
 
     /**
      * @brief Remove person data from db
@@ -66,6 +66,14 @@ public:
     /**
      * @brief Print names of all persons in db
      */
+
+
+    /**
+     *@brief Check if the email is already taken
+     */
+    bool emailExists(const QString& email);
+
+
     void printAllUsers() const;
 
     /**
