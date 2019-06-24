@@ -2,13 +2,13 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <admindialog.h>
-#include <userregister.h>
 
 #include <QtSql>
 #include <QDebug>
 #include <QFileInfo>
 
+
+#include<home.h>
 
 namespace Ui {
 class MainWindow;
@@ -23,14 +23,11 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_pushButton_Login_clicked();
-
-    void on_pushButton_Login_2_clicked();
 
 private:
     Ui::MainWindow *ui;
-    AdminDialog *adminDialog;
-    UserRegister *userRegister;
+    Home homeStack;
+
 };
 
 #endif // MAINWINDOW_H
