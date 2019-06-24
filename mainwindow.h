@@ -9,6 +9,8 @@
 
 
 #include<home.h>
+//#include<admin.h>
+//#include<user.h>
 
 namespace Ui {
 class MainWindow;
@@ -26,8 +28,9 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    Home homeStack;
-
+    Home *homeStack;
+//    User *userStack;
+//    Admin *adminStack;
 };
 
 #endif // MAINWINDOW_H

@@ -11,7 +11,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->mainStack->insertWidget(0,&homeStack);
+    ui->mainStack->insertWidget(0,homeStack);
+//    ui->mainStack->insertWidget(1,userStack);
+//    ui->mainStack->insertWidget(2,adminStack);
     ui->mainStack->setCurrentIndex(0);
 
 
