@@ -25,22 +25,31 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        admin.cpp \
         admindialog.cpp \
         db_mannager.cpp \
+        home.cpp \
         main.cpp \
         mainwindow.cpp \
+        user.cpp \
         userregister.cpp
 
 HEADERS += \
+        admin.h \
         admindialog.h \
         db_mannager.h \
+        home.h \
         identity.h \
         mainwindow.h \
+        user.h \
         userregister.h
 
 FORMS += \
+        admin.ui \
         admindialog.ui \
+        home.ui \
         mainwindow.ui \
+        user.ui \
         userregister.ui
 
 # Default rules for deployment.
