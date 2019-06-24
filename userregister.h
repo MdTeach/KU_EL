@@ -14,6 +14,7 @@ class UserRegister : public QDialog
 public:
     explicit UserRegister(QWidget *parent = nullptr);
     ~UserRegister();
+   void showMessage(UserRegister* context, const QString message);
 
 private slots:
     void on_pushButton_clicked();

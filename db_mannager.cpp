@@ -68,7 +68,7 @@ bool DbManager::removeUser(const QString& name)
 {
     bool success = false;
 
-    if (userExists(name))
+    if (emailExists(name))
     {
         QSqlQuery queryDelete;
         queryDelete.prepare("DELETE FROM people WHERE name = (:name)");
@@ -100,28 +100,6 @@ void DbManager::printAllUsers() const
     }
 }
 
-bool DbManager::userExists(const QString& name) const
-{
-    bool exists = false;
-
-    QSqlQuery checkQuery;
-    checkQuery.prepare("SELECT name FROM user WHERE name = (:name)");
-    checkQuery.bindValue(":name", name);
-
-    if (checkQuery.exec())
-    {
-        if (checkQuery.next())
-        {
-            exists = true;
-        }
-    }
-    else
-    {
-        qDebug() << "user exists failed: " << checkQuery.lastError();
-    }
-
-    return exists;
-}
 
 bool DbManager::emailExists(const QString &email){
     QSqlQuery checkQuery;

@@ -13,6 +13,9 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    //ui->welcomeWidget->setCurrentIndex(0);
+
+
     DbManager db("database.db");
     if(!db.isOpen()){
         qDebug()<<"Database not opening";
