@@ -23,14 +23,11 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_pushButton_Login_clicked();
-
-    void on_pushButton_Login_2_clicked();
 
 private:
     Ui::MainWindow *ui;
-    AdminDialog *adminDialog;
-    UserRegister *userRegister;
+//    AdminDialog *adminDialog;
+//    UserRegister *userRegister;
 };
 
 #endif // MAINWINDOW_H
