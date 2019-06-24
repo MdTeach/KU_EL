@@ -9,6 +9,10 @@
 #include <QDebug>
 #include <QFileInfo>
 
+#include<home.h>
+#include<user.h>
+#include<admin.h>
+
 
 namespace Ui {
 class MainWindow;
@@ -24,8 +28,13 @@ public:
 
 private slots:
 
+    void on_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
+    Home *homeStack;
+    admin *adminStack;
+    User *userStack;
 //    AdminDialog *adminDialog;
 //    UserRegister *userRegister;
 };
