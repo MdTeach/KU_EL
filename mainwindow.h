@@ -2,8 +2,12 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include<QMessageBox>
+
 #include <admindialog.h>
-#include <userregister.h>
+
+#include<users.h>
+#include<admin.h>
 
 #include <QtSql>
 #include <QDebug>
@@ -36,10 +40,16 @@ private slots:
 
     void on_pushButton_register_clicked();
 
+    void on_adminButton_clicked();
+
+    void on_userButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     AdminDialog *adminDialog;
-    UserRegister *userRegister;
+
+    Users *users;
+    Admin *admin;
 };
 
 #endif // MAINWINDOW_H

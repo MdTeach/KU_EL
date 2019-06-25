@@ -150,3 +150,17 @@ bool isEmpty(QString string){
     if(string == "" || string == " ") return true;
     return false;
 }
+
+void MainWindow::on_adminButton_clicked()
+{
+    admin = new Admin(this);
+    admin->show();
+    this->hide();
+}
+
+void MainWindow::on_userButton_clicked()
+{
+    users = new Users(this);
+    users->show();
+    this->hide();
+}

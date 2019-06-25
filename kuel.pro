@@ -25,23 +25,26 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        admin.cpp \
         admindialog.cpp \
         db_mannager.cpp \
         main.cpp \
         mainwindow.cpp \
-        userregister.cpp
+        users.cpp
 
 HEADERS += \
+        admin.h \
         admindialog.h \
         db_mannager.h \
         identity.h \
         mainwindow.h \
-        userregister.h
+        users.h
 
 FORMS += \
+        admin.ui \
         admindialog.ui \
         mainwindow.ui \
-        userregister.ui
+        users.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
