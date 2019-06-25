@@ -21,11 +21,10 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void showMessage(MainWindow* context, const QString message);
 
 private slots:
     void on_pushButton_Login_clicked();
-
-    void on_pushButton_Login_2_clicked();
 
     void on_homeButton_clicked();
 
@@ -34,6 +33,8 @@ private slots:
     void on_registerButton_clicked();
 
     void on_aboutButton_clicked();
+
+    void on_pushButton_register_clicked();
 
 private:
     Ui::MainWindow *ui;

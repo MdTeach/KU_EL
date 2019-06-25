@@ -16,10 +16,6 @@ UserRegister::~UserRegister()
     delete ui;
 }
 
-bool isEmpty(QString string){
-    if(string == "" || string == " ") return true;
-    return false;
-}
 
 
 void UserRegister::on_pushButton_clicked()

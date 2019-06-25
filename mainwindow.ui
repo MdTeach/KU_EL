@@ -32,7 +32,7 @@
      <string notr="true">background-color: rgb(85, 170, 0);</string>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="homePage">
      <widget class="QLabel" name="label_3">
@@ -85,7 +85,7 @@
             <item>
              <widget class="QLabel" name="label">
               <property name="text">
-               <string>Login ID:</string>
+               <string>Email:</string>
               </property>
              </widget>
             </item>
@@ -120,13 +120,6 @@
            <widget class="QPushButton" name="pushButton_Login">
             <property name="text">
              <string>Log In</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="pushButton_Login_2">
-            <property name="text">
-             <string>Register</string>
             </property>
            </widget>
           </item>
@@ -224,7 +217,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="pushButton_register">
       <property name="geometry">
        <rect>
         <x>200</x>
