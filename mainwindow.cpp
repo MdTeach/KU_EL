@@ -13,16 +13,16 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    //ui->welcomeWidget->setCurrentIndex(0);
+    ui->mainStack->setCurrentIndex(0);
 
 
-    DbManager db("database.db");
-    if(!db.isOpen()){
-        qDebug()<<"Database not opening";
-    }else{
-        db.createTable();   // Creates a table if it doens't exist. Otherwise, it will use existing table.
-        db.printAllUsers();
-    }
+//    DbManager db("database.db");
+//    if(!db.isOpen()){
+//        qDebug()<<"Database not opening";
+//    }else{
+//        db.createTable();   // Creates a table if it doens't exist. Otherwise, it will use existing table.
+//        db.printAllUsers();
+//    }
 }
 
 MainWindow::~MainWindow()
@@ -57,4 +57,24 @@ void MainWindow::on_pushButton_Login_2_clicked()
     hide();
     userRegister = new UserRegister(this);
     userRegister->show();
+}
+
+void MainWindow::on_homeButton_clicked()
+{
+    ui->mainStack->setCurrentIndex(0);
+}
+
+void MainWindow::on_loginButton_clicked()
+{
+    ui->mainStack->setCurrentIndex(1);
+}
+
+void MainWindow::on_registerButton_clicked()
+{
+    ui->mainStack->setCurrentIndex(2);
+}
+
+void MainWindow::on_aboutButton_clicked()
+{
+    ui->mainStack->setCurrentIndex(3);
 }

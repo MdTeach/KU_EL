@@ -27,6 +27,14 @@ private slots:
 
     void on_pushButton_Login_2_clicked();
 
+    void on_homeButton_clicked();
+
+    void on_loginButton_clicked();
+
+    void on_registerButton_clicked();
+
+    void on_aboutButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     AdminDialog *adminDialog;
