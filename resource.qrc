@@ -2,5 +2,8 @@
     <qresource prefix="/images">
         <file>po.jpg</file>
         <file>im.jpg</file>
+        <file>img/background.gif</file>
+        <file>img/clothes.gif</file>
+        <file>img/basket.png</file>
     </qresource>
 </RCC>

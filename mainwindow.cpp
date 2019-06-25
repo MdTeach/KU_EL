@@ -4,6 +4,7 @@
 #include "identity.h"
 
 #include <QDebug>
+#include<QMovie>
 #include <db_mannager.h>
 
 
@@ -15,14 +16,19 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->mainStack->setCurrentIndex(0);
 
+    //Ading the animating gif
+    QMovie *movie = new QMovie(":/images/img/clothes.gif");
+    ui->welcomeLabel->setMovie(movie);
+    movie->start();
 
-    DbManager db("database.db");
-    if(!db.isOpen()){
-        qDebug()<<"Database not opening";
-    }else{
-        db.createTable();   // Creates a table if it doens't exist. Otherwise, it will use existing table.
-        db.printAllUsers();
-    }
+
+//    DbManager db("database.db");
+//    if(!db.isOpen()){
+//        qDebug()<<"Database not opening";
+//    }else{
+//        db.createTable();   // Creates a table if it doens't exist. Otherwise, it will use existing table.
+//        db.printAllUsers();
+//    }
 }
 
 MainWindow::~MainWindow()

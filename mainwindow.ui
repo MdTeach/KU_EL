@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>717</width>
-    <height>548</height>
+    <width>869</width>
+    <height>701</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,18 +20,29 @@ font-size:24px;
 }
 
 
-
-QPushButton
-{
-   
-background:red;
-
-border-radius:60px;
+QPushButton{
+	box-shadow:inset 0px 39px 0px -24px #e67a73;
+	background-color:#e4685d;
+	border-radius:0px;
+	border:1px solid #ffffff;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	padding:10px 27px;
 }
-
+QPushButton:hover {
+	background-color:#eb675e;
+}
+QPushButton:active {
+	position:relative;
+	top:1px;
+}
 QLabel
 {
-  colour:white;
+  color:white;
+  font-size:18;
 }
 
 QPushButton 
@@ -47,19 +58,12 @@ border-radius:15px;
 background:#49ebff;
 }
 
-QLineEdit
-{
-background:transparent;
-border:none;
-color:white;
-border-bottom:1pxsolid#717072;
-}
 
 QMainWindow
 {
 
-background:url(:/images/po.jpg);
-
+	background-color: rgb(198, 66, 99);
+	padding:10px;
 }
 </string>
   </property>
@@ -67,46 +71,102 @@ background:url(:/images/po.jpg);
    <widget class="QStackedWidget" name="mainStack">
     <property name="geometry">
      <rect>
-      <x>119</x>
+      <x>70</x>
       <y>0</y>
-      <width>601</width>
-      <height>691</height>
+      <width>721</width>
+      <height>731</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 47, 210);
-</string>
+     <string notr="true">background-color: rgb(255, 85, 127);</string>
     </property>
     <property name="currentIndex">
      <number>2</number>
     </property>
     <widget class="QWidget" name="homePage">
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 85, 127);</string>
+     </property>
      <widget class="QLabel" name="label_3">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>130</y>
-        <width>401</width>
-        <height>111</height>
+        <x>90</x>
+        <y>170</y>
+        <width>461</width>
+        <height>71</height>
        </rect>
       </property>
       <property name="font">
        <font>
         <family>century gothic</family>
         <pointsize>-1</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
       <property name="text">
-       <string>Welcome to KUEL</string>
+       <string>WELCOME TO KUEL</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
+     <widget class="QLabel" name="label_6">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>640</y>
+        <width>661</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>century gothic</family>
+        <pointsize>-1</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string>E-LAUNDRY MANAGEMENT SYSTEM</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_7">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>150</y>
+        <width>661</width>
+        <height>441</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/images/img/basket.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <zorder>label_6</zorder>
+     <zorder>label_7</zorder>
+     <zorder>label_3</zorder>
     </widget>
     <widget class="QWidget" name="loginPage">
      <widget class="QGroupBox" name="groupBox">
       <property name="geometry">
        <rect>
-        <x>50</x>
-        <y>110</y>
+        <x>120</x>
+        <y>170</y>
         <width>351</width>
         <height>241</height>
        </rect>
@@ -185,119 +245,158 @@ background:#49ebff;
      </widget>
     </widget>
     <widget class="QWidget" name="registerPage">
-     <widget class="QWidget" name="layoutWidget_2">
+     <widget class="QFrame" name="frame">
       <property name="geometry">
        <rect>
-        <x>50</x>
-        <y>70</y>
-        <width>371</width>
-        <height>200</height>
+        <x>100</x>
+        <y>190</y>
+        <width>451</width>
+        <height>361</height>
        </rect>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_5">
-       <item>
-        <layout class="QVBoxLayout" name="verticalLayout_6">
-         <item>
-          <layout class="QVBoxLayout" name="verticalLayout_7">
-           <item>
-            <layout class="QVBoxLayout" name="verticalLayout_8">
-             <item>
-              <layout class="QHBoxLayout" name="horizontalLayout_2">
-               <item>
-                <widget class="QLineEdit" name="Fname">
-                 <property name="styleSheet">
-                  <string notr="true">Qlabel{
+      <property name="styleSheet">
+       <string notr="true">color:white;
+background-color: rgb(240, 80, 120);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QWidget" name="layoutWidget_2">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>70</y>
+         <width>371</width>
+         <height>215</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_5">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_6">
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_7">
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_8">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_2">
+                <item>
+                 <widget class="QLineEdit" name="Fname">
+                  <property name="styleSheet">
+                   <string notr="true">Qlabel{
 backgrooundcolor:rgb(255, 255, 255);
 }</string>
-                 </property>
-                 <property name="placeholderText">
-                  <string>First Name</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLineEdit" name="Lname">
-                 <property name="placeholderText">
-                  <string>Last Name</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="Email">
-               <property name="placeholderText">
-                <string>Email</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_3">
-             <item>
-              <widget class="QLineEdit" name="Password">
-               <property name="echoMode">
-                <enum>QLineEdit::Password</enum>
-               </property>
-               <property name="placeholderText">
-                <string>Password</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="Password_re">
-               <property name="echoMode">
-                <enum>QLineEdit::Password</enum>
-               </property>
-               <property name="placeholderText">
-                <string>Re-enter Password</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="Address">
-           <property name="placeholderText">
-            <string>Full Address</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="Number">
-         <property name="placeholderText">
-          <string>Mobile number</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QPushButton" name="registerButton_2">
-      <property name="geometry">
-       <rect>
-        <x>160</x>
-        <y>280</y>
-        <width>131</width>
-        <height>28</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Register</string>
-      </property>
+                  </property>
+                  <property name="placeholderText">
+                   <string>First Name</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="Lname">
+                  <property name="placeholderText">
+                   <string>Last Name</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="Email">
+                <property name="placeholderText">
+                 <string>Email</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_3">
+              <item>
+               <widget class="QLineEdit" name="Password">
+                <property name="echoMode">
+                 <enum>QLineEdit::Password</enum>
+                </property>
+                <property name="placeholderText">
+                 <string>Password</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="Password_re">
+                <property name="echoMode">
+                 <enum>QLineEdit::Password</enum>
+                </property>
+                <property name="placeholderText">
+                 <string>Re-enter Password</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="Address">
+            <property name="placeholderText">
+             <string>Full Address</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="Number">
+            <property name="placeholderText">
+             <string>Mobile number</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QPushButton" name="registerButton_2">
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>300</y>
+         <width>131</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:white</string>
+       </property>
+       <property name="text">
+        <string>Register</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_8">
+       <property name="geometry">
+        <rect>
+         <x>190</x>
+         <y>20</y>
+         <width>171</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Register</string>
+       </property>
+      </widget>
      </widget>
     </widget>
     <widget class="QWidget" name="page">
      <widget class="QLabel" name="label_4">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>20</y>
-        <width>181</width>
+        <x>200</x>
+        <y>190</y>
+        <width>291</width>
         <height>91</height>
        </rect>
       </property>
@@ -316,8 +415,8 @@ backgrooundcolor:rgb(255, 255, 255);
      <widget class="QLabel" name="label_5">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>100</y>
+        <x>200</x>
+        <y>270</y>
         <width>291</width>
         <height>201</height>
        </rect>
@@ -335,11 +434,14 @@ provider</string>
    <widget class="QPushButton" name="homeButton">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>50</y>
+      <x>100</x>
+      <y>10</y>
       <width>111</width>
       <height>51</height>
      </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="text">
      <string>Home</string>
@@ -348,11 +450,14 @@ provider</string>
    <widget class="QPushButton" name="loginButton">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>120</y>
+      <x>220</x>
+      <y>10</y>
       <width>111</width>
       <height>51</height>
      </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="text">
      <string>Log In</string>
@@ -361,11 +466,14 @@ provider</string>
    <widget class="QPushButton" name="registerButton">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>190</y>
+      <x>340</x>
+      <y>10</y>
       <width>111</width>
       <height>51</height>
      </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="text">
      <string>Register</string>
@@ -374,11 +482,14 @@ provider</string>
    <widget class="QPushButton" name="aboutButton">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>400</y>
+      <x>460</x>
+      <y>10</y>
       <width>111</width>
       <height>51</height>
      </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="text">
      <string>About</string>
@@ -387,8 +498,8 @@ provider</string>
    <widget class="QPushButton" name="userButton">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>260</y>
+      <x>760</x>
+      <y>480</y>
       <width>111</width>
       <height>51</height>
      </rect>
@@ -397,24 +508,11 @@ provider</string>
      <string>User</string>
     </property>
    </widget>
-   <widget class="Line" name="line">
-    <property name="geometry">
-     <rect>
-      <x>110</x>
-      <y>0</y>
-      <width>20</width>
-      <height>691</height>
-     </rect>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Vertical</enum>
-    </property>
-   </widget>
    <widget class="QPushButton" name="adminButton">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>330</y>
+      <x>760</x>
+      <y>540</y>
       <width>111</width>
       <height>51</height>
      </rect>
@@ -423,6 +521,33 @@ provider</string>
      <string>Admin</string>
     </property>
    </widget>
+   <widget class="QLabel" name="welcomeLabel">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>20</y>
+      <width>321</width>
+      <height>181</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>century gothic</family>
+      <pointsize>-1</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Welcome to KUEL</string>
+    </property>
+   </widget>
+   <zorder>mainStack</zorder>
+   <zorder>homeButton</zorder>
+   <zorder>loginButton</zorder>
+   <zorder>registerButton</zorder>
+   <zorder>userButton</zorder>
+   <zorder>adminButton</zorder>
+   <zorder>welcomeLabel</zorder>
+   <zorder>aboutButton</zorder>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
