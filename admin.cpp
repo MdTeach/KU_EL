@@ -12,3 +12,10 @@ Admin::~Admin()
 {
     delete ui;
 }
+
+void Admin::on_pushButton_clicked()
+{
+    this->close();
+    QWidget *parent = this->parentWidget();
+    parent->show();
+}

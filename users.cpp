@@ -12,3 +12,10 @@ Users::~Users()
 {
     delete ui;
 }
+
+void Users::on_pushButton_clicked()
+{
+    this->close();
+    QWidget *parent = this->parentWidget();
+    parent->show();
+}
