@@ -7,32 +7,78 @@
     <x>0</x>
     <y>0</y>
     <width>717</width>
-    <height>687</height>
+    <height>548</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QBtton{
- background-color: rgb(255, 170, 0);
-}</string>
+   <string notr="true">*{
+  font-family:century gothic;
+font-size:24px;
+}
+
+
+
+QPushButton
+{
+   
+background:red;
+
+border-radius:60px;
+}
+
+QLabel
+{
+  colour:white;
+}
+
+QPushButton 
+{
+ color:white;
+border-radius:15px;
+}
+
+QPushButton:hover 
+{
+ color:#333;
+border-radius:15px;
+background:#49ebff;
+}
+
+QLineEdit
+{
+background:transparent;
+border:none;
+color:white;
+border-bottom:1pxsolid#717072;
+}
+
+QMainWindow
+{
+
+background:url(:/images/po.jpg);
+
+}
+</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QStackedWidget" name="mainStack">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>80</y>
-      <width>500</width>
-      <height>500</height>
+      <x>119</x>
+      <y>0</y>
+      <width>601</width>
+      <height>691</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(85, 170, 0);</string>
+     <string notr="true">background-color: rgb(255, 47, 210);
+</string>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="homePage">
      <widget class="QLabel" name="label_3">
@@ -46,8 +92,8 @@
       </property>
       <property name="font">
        <font>
-        <family>Proxy 9</family>
-        <pointsize>18</pointsize>
+        <family>century gothic</family>
+        <pointsize>-1</pointsize>
        </font>
       </property>
       <property name="text">
@@ -118,6 +164,15 @@
          <layout class="QVBoxLayout" name="verticalLayout_2">
           <item>
            <widget class="QPushButton" name="pushButton_Login">
+            <property name="styleSheet">
+             <string notr="true">
+QPushButton:hover 
+{
+ color:#333;
+border-radius:15px;
+background:#49ebff;
+}</string>
+            </property>
             <property name="text">
              <string>Log In</string>
             </property>
@@ -136,7 +191,7 @@
         <x>50</x>
         <y>70</y>
         <width>371</width>
-        <height>161</height>
+        <height>200</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -150,6 +205,11 @@
               <layout class="QHBoxLayout" name="horizontalLayout_2">
                <item>
                 <widget class="QLineEdit" name="Fname">
+                 <property name="styleSheet">
+                  <string notr="true">Qlabel{
+backgrooundcolor:rgb(255, 255, 255);
+}</string>
+                 </property>
                  <property name="placeholderText">
                   <string>First Name</string>
                  </property>
@@ -222,21 +282,39 @@
      <widget class="QLabel" name="label_4">
       <property name="geometry">
        <rect>
-        <x>90</x>
-        <y>130</y>
-        <width>151</width>
+        <x>20</x>
+        <y>20</y>
+        <width>181</width>
         <height>91</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>26</pointsize>
+        <family>century gothic</family>
+        <pointsize>-1</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
       <property name="text">
-       <string>About</string>
+       <string>What is KUEL?</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>100</y>
+        <width>291</width>
+        <height>201</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>KUEL is simply an app
+that benifits laundry
+service by linking 
+costomer and service
+provider</string>
       </property>
      </widget>
     </widget>
@@ -244,10 +322,10 @@
    <widget class="QPushButton" name="homeButton">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>40</y>
-      <width>93</width>
-      <height>28</height>
+      <x>0</x>
+      <y>50</y>
+      <width>111</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
@@ -257,10 +335,10 @@
    <widget class="QPushButton" name="loginButton">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>40</y>
-      <width>93</width>
-      <height>28</height>
+      <x>0</x>
+      <y>120</y>
+      <width>111</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
@@ -270,10 +348,10 @@
    <widget class="QPushButton" name="registerButton">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>40</y>
-      <width>93</width>
-      <height>28</height>
+      <x>0</x>
+      <y>190</y>
+      <width>111</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
@@ -283,40 +361,53 @@
    <widget class="QPushButton" name="aboutButton">
     <property name="geometry">
      <rect>
-      <x>390</x>
-      <y>40</y>
-      <width>93</width>
-      <height>28</height>
+      <x>0</x>
+      <y>400</y>
+      <width>111</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
      <string>About</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="adminButton">
-    <property name="geometry">
-     <rect>
-      <x>80</x>
-      <y>600</y>
-      <width>93</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Admin</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="userButton">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>600</y>
-      <width>93</width>
-      <height>28</height>
+      <x>0</x>
+      <y>260</y>
+      <width>111</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
      <string>User</string>
+    </property>
+   </widget>
+   <widget class="Line" name="line">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>0</y>
+      <width>20</width>
+      <height>691</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="adminButton">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>330</y>
+      <width>111</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Admin</string>
     </property>
    </widget>
   </widget>
