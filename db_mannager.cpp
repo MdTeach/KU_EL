@@ -64,32 +64,24 @@ bool DbManager::addUser(const QString& email, const QString& pass){
 
 
 
-bool DbManager::removeUser(const QString& name)
-{
+bool DbManager::removeUser(const QString& name){
     bool success = false;
 
-    if (emailExists(name))
-    {
+    if (emailExists(name)){
         QSqlQuery queryDelete;
         queryDelete.prepare("DELETE FROM people WHERE name = (:name)");
         queryDelete.bindValue(":name", name);
         success = queryDelete.exec();
-
-        if(!success)
-        {
+        if(!success){
             qDebug() << "remove  failed: " << queryDelete.lastError();
         }
-    }
-    else
-    {
+    }else{
         qDebug() << "remove user failed: user doesnt exist";
     }
-
     return success;
 }
 
-void DbManager::printAllUsers() const
-{
+void DbManager::printAllUsers() const{
     qDebug() << "users in db:";
     QSqlQuery query("SELECT * FROM user");
     int idName = query.record().indexOf("email");
@@ -99,6 +91,7 @@ void DbManager::printAllUsers() const
         qDebug() << "===" << email;
     }
 }
+
 
 
 bool DbManager::emailExists(const QString &email){
@@ -134,8 +127,7 @@ bool DbManager::removeAllUsers()
     return success;
 }
 
-bool DbManager::userAuth(const QString &email, const QString &pass)const
-{
+bool DbManager::userAuth(const QString &email, const QString &pass)const{
     bool exists = false;
 
     QSqlQuery checkQuery;
@@ -157,4 +149,17 @@ bool DbManager::userAuth(const QString &email, const QString &pass)const
     return exists;
 }
 
+QList<QString> DbManager::getAllUsers() const{
+    QList<QString> userList;
+
+    qDebug() << "users in db:";
+    QSqlQuery query("SELECT * FROM user");
+    int idName = query.record().indexOf("email");
+    while (query.next()){
+        QString email = query.value(idName).toString();
+        userList.push_front(email);
+    }
+
+    return  userList;
+}
 

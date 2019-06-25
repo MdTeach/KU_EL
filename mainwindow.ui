@@ -78,7 +78,7 @@ background:url(:/images/po.jpg);
 </string>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="homePage">
      <widget class="QLabel" name="label_3">
@@ -276,6 +276,19 @@ backgrooundcolor:rgb(255, 255, 255);
         </widget>
        </item>
       </layout>
+     </widget>
+     <widget class="QPushButton" name="registerButton_2">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>280</y>
+        <width>131</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Register</string>
+      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="page">

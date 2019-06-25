@@ -16,13 +16,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->mainStack->setCurrentIndex(0);
 
 
-//    DbManager db("database.db");
-//    if(!db.isOpen()){
-//        qDebug()<<"Database not opening";
-//    }else{
-//        db.createTable();   // Creates a table if it doens't exist. Otherwise, it will use existing table.
-//        db.printAllUsers();
-//    }
+    DbManager db("database.db");
+    if(!db.isOpen()){
+        qDebug()<<"Database not opening";
+    }else{
+        db.createTable();   // Creates a table if it doens't exist. Otherwise, it will use existing table.
+        db.printAllUsers();
+    }
 }
 
 MainWindow::~MainWindow()
@@ -83,6 +83,35 @@ void MainWindow::on_aboutButton_clicked()
 
 void MainWindow::on_pushButton_register_clicked()
 {
+
+}
+
+void MainWindow::showMessage(MainWindow *context, const QString message){
+    QMessageBox :: information (context, "Error!!", message);
+}
+
+
+bool isEmpty(QString string){
+    if(string == "" || string == " ") return true;
+    return false;
+}
+
+void MainWindow::on_adminButton_clicked()
+{
+    admin = new Admin(this);
+    admin->show();
+    this->hide();
+}
+
+void MainWindow::on_userButton_clicked()
+{
+    users = new Users(this);
+    users->show();
+    this->hide();
+}
+
+void MainWindow::on_registerButton_2_clicked()
+{
     //Getting objs from the ui
     QString email = ui->Email->text();
     QString pass1 = ui->Password->text();
@@ -133,34 +162,12 @@ void MainWindow::on_pushButton_register_clicked()
             qDebug()<<"Adding"<<email<<pass1;
             if(db.addUser(email,pass1)){
                 qDebug()<<"Sucess";
+                QMessageBox::information(this,"Succers", "Registered Sucessfully");
+                ui->mainStack->setCurrentIndex(1);
             }else{
                 qDebug()<<"Failed";
             }
         }
 
     }
-}
-
-void MainWindow::showMessage(MainWindow *context, const QString message){
-    QMessageBox :: information (context, "Error!!", message);
-}
-
-
-bool isEmpty(QString string){
-    if(string == "" || string == " ") return true;
-    return false;
-}
-
-void MainWindow::on_adminButton_clicked()
-{
-    admin = new Admin(this);
-    admin->show();
-    this->hide();
-}
-
-void MainWindow::on_userButton_clicked()
-{
-    users = new Users(this);
-    users->show();
-    this->hide();
 }

@@ -2,6 +2,7 @@
 #define DB_MANNAGER_H
 
 #include <QSqlDatabase>
+#include<QList>
 
 /**
  * \class DbManager
@@ -78,6 +79,12 @@ public:
      * @return db_primary_key - , 0 - log in failed
      */
     bool userAuth(const QString& name, const QString& pass) const;
+
+    /**
+     * @brief Get all the user data from the database
+     * @return Returns list of strings
+     */
+    QList<QString> getAllUsers()const;
 
 private:
     QSqlDatabase m_db;

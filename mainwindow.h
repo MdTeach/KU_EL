@@ -44,6 +44,8 @@ private slots:
 
     void on_userButton_clicked();
 
+    void on_registerButton_2_clicked();
+
 private:
     Ui::MainWindow *ui;
     AdminDialog *adminDialog;
