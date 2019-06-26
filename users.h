@@ -27,6 +27,8 @@ private slots:
 private:
     Ui::Users *ui;
     QString uemail;
+
+    void setUserProfileInfo(const QString& email);
 };
 
 #endif // USERS_H

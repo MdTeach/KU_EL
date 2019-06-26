@@ -136,30 +136,47 @@ bool DbManager::userAuth(const QString &email, const QString &pass)const{
     checkQuery.prepare("SELECT email FROM user WHERE email = (:email) AND pass = (:pass)");
     checkQuery.bindValue(":email", email);
     checkQuery.bindValue(":pass", pass);
-    if (checkQuery.exec())
-    {
-        if (checkQuery.next())
-        {
+    if (checkQuery.exec()){
+        if (checkQuery.next()){
             exists = true;
         }
-    }
-    else
-    {
+    }else{
         qDebug() << "user exists failed: " << checkQuery.lastError();
     }
-
     return exists;
 }
 
-QList<QString> DbManager::getAllUsers() const{
+QList<QString> DbManager::getUserInfo(const QString& email) const{
     QList<QString> userList;
 
     qDebug() << "users in db:";
-    QSqlQuery query("SELECT * FROM user");
-    int idName = query.record().indexOf("email");
-    while (query.next()){
-        QString email = query.value(idName).toString();
-        userList.push_front(email);
+    QSqlQuery query;
+    query.prepare("SELECT * FROM user WHERE email = (:email)");
+    query.bindValue(":email", email);
+
+    if(!query.exec()){
+        qDebug()<<"Query err"<<query.lastError();
+    }else{
+        //Query was sucessful :)
+        int email_id = query.record().indexOf("email");
+        int fname_id = query.record().indexOf("fname");
+        int lname_id = query.record().indexOf("lname");
+        int addr_id = query.record().indexOf("addr");
+        int phn_id = query.record().indexOf("phn");
+
+        if(query.next()){
+            QString email = query.value(email_id).toString();
+            QString fname = query.value(fname_id).toString();
+            QString lname = query.value(lname_id).toString();
+            QString addr = query.value(addr_id).toString();
+            QString phn = query.value(phn_id).toString();
+
+            userList.push_front(phn);
+            userList.push_front(addr);
+            userList.push_front(lname);
+            userList.push_front(fname);
+            userList.push_front(email);
+        }
     }
 
     return  userList;

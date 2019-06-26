@@ -76,7 +76,7 @@ public:
      * @brief Get all the user data from the database
      * @return Returns list of strings
      */
-    QList<QString> getAllUsers()const;
+    QList<QString> getUserInfo(const QString& email)const;
 
 private:
     QSqlDatabase m_db;

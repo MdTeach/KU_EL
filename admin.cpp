@@ -52,7 +52,10 @@ void Admin::on_listUserButton_clicked()
 
 void Admin::addUserList(){
     DbManager db("database.db");
-    QList<QString> data = db.getAllUsers();
+
+    QList<QString> data; //db.getAllUsers();
+    data.push_back("Raw data");
+
     qDebug()<<data[0];
 
     for(int i=0; i<data.length();i++){
