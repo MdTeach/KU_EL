@@ -20,7 +20,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->welcomeLabel->setMovie(movie);
     movie->start();
 
-
 //    DbManager db("database.db");
 //    if(!db.isOpen()){
 //        qDebug()<<"Database not opening";

@@ -134,7 +134,7 @@ border-radius:20px;</string>
         <rect>
          <x>40</x>
          <y>90</y>
-         <width>541</width>
+         <width>341</width>
          <height>271</height>
         </rect>
        </property>
@@ -253,6 +253,9 @@ color:white</string>
           <height>41</height>
          </rect>
         </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="text">
          <string>Add</string>
         </property>
@@ -310,10 +313,40 @@ color:white</string>
           <height>41</height>
          </rect>
         </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="text">
          <string>Delete</string>
         </property>
        </widget>
+      </widget>
+      <widget class="QWidget" name="verticalLayoutWidget_5">
+       <property name="geometry">
+        <rect>
+         <x>380</x>
+         <y>90</y>
+         <width>231</width>
+         <height>271</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="itemPirceList">
+        <property name="sizeConstraint">
+         <enum>QLayout::SetFixedSize</enum>
+        </property>
+        <property name="leftMargin">
+         <number>10</number>
+        </property>
+        <property name="topMargin">
+         <number>10</number>
+        </property>
+        <property name="rightMargin">
+         <number>10</number>
+        </property>
+        <property name="bottomMargin">
+         <number>10</number>
+        </property>
+       </layout>
       </widget>
      </widget>
     </widget>

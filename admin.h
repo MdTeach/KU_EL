@@ -26,6 +26,8 @@ private slots:
 
     void on_addDataButton_clicked();
 
+    void on_reoveItemButton_clicked();
+
 private:
     Ui::Admin *ui;
     void addUserList();

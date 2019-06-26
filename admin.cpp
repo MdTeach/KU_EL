@@ -65,29 +65,43 @@ void Admin::addUserList(){
 
 void Admin::addItemList(){
     Admin_db admin_db("database.db");
-    admin_db.printAll();
 
+    //Gets all data from the db
     QList<QList<QString>> data = admin_db.getAllData();
 
-    QString spacing = "    "; //1 tab
+    //Spacing between SN and Item name column
+    QString spacing = "     "; //1 tab
 
-    QLabel* haderLabel = new QLabel();
-    haderLabel->setText("SN"+spacing+"Item Name"+spacing+"Price");
-    //ui->itemsList->addWidget(haderLabel);
+    //Setting text label for the table header
+    QLabel* haderNameLabel = new QLabel();
+    QLabel* haderPriceLabel = new QLabel();
 
+    //Setting data to table headers
+    haderNameLabel->setText("SN"+spacing+"Item Name");
+    haderPriceLabel->setText("Price");
+
+    //Inserting the header label to the UI
+    ui->itemsList->addWidget(haderNameLabel);
+    ui->itemPirceList->addWidget(haderPriceLabel);
+
+    //Loopig through all data and showing in the VLayout
     for(int i=0;i<data.length();i++){
         QList<QString> temp = data[i];
         QString itemName = temp[0];
         QString itemCost = temp[1];
 
-        QLabel *item = new QLabel();
-        QString text = QString::number(i+1)+spacing+itemName+spacing+itemCost;
-        item->setText(text);
-        ui->itemsList->addWidget(item);
+        QLabel *itemNameLabel = new QLabel();
+        QLabel *itemPriceLabel = new QLabel();
 
+        QString nameString = QString::number(i+1)+spacing+spacing+itemName;
+        QString costString = itemCost;
+
+        itemNameLabel->setText(nameString);
+        itemPriceLabel->setText(costString);
+
+        ui->itemsList->addWidget(itemNameLabel);
+        ui->itemPirceList->addWidget(itemPriceLabel);
     }
-
-
 
 }
 
@@ -116,6 +130,9 @@ void Admin::on_addDataButton_clicked()
         }else{
             admin_db.addItem(itemName,itemCost);
 
+            this->close();
+            QWidget *parent = this->parentWidget();
+            parent->show();
         }
     }
 
@@ -125,4 +142,28 @@ void Admin::on_addDataButton_clicked()
 bool Admin::isEmpty(const QString& str)const{
     if(str == "" || str == " ") return true;
     return false;
+}
+
+void Admin::on_reoveItemButton_clicked()
+{
+    //Remove the list content
+    QString itemName = ui->removeItemName->text();
+    if(isEmpty(itemName)){
+        qDebug("the item is empty. provide the valid name");
+    }else{
+        Admin_db admin_db("database.db");
+        if(!admin_db.doesItemExits(itemName)){
+            //Item donot exist show message
+            qDebug()<<"Given Item doesn't exist";
+        }else{
+            //remove the data
+            admin_db.removeItem(itemName);
+
+            this->close();
+            QWidget *parent = this->parentWidget();
+            parent->show();
+        }
+    }
+
+
 }
