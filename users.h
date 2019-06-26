@@ -12,7 +12,7 @@ class Users : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit Users(QWidget *parent = nullptr);
+    explicit Users(QWidget *parent = nullptr, QString ueamail="");
     ~Users();
 
 private slots:
@@ -20,6 +20,7 @@ private slots:
 
 private:
     Ui::Users *ui;
+    QString uemail;
 };
 
 #endif // USERS_H

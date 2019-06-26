@@ -1,11 +1,18 @@
- #include "users.h"
+#include "users.h"
 #include "ui_users.h"
 
-Users::Users(QWidget *parent) :
+#include<QDebug>
+
+Users::Users(QWidget *parent,QString uemail) :
     QMainWindow(parent),
     ui(new Ui::Users)
 {
     ui->setupUi(this);
+    this->uemail = uemail;
+
+    QString msg = "Hello "+this->uemail;
+    ui->greetLabel->setText(msg);
+
 }
 
 Users::~Users()

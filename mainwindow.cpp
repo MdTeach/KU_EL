@@ -53,8 +53,8 @@ void MainWindow::on_pushButton_Login_clicked()
         QMessageBox :: information (this, "Error!!", "Worng username or password");
     }else{
         hide();
-        adminDialog = new AdminDialog(this);
-        adminDialog->show();
+        users = new Users(this, userName);
+        users->show();
     }
 
 
