@@ -34,4 +34,49 @@ bool Admin_db::createTable() const{
     }
 }
 
+bool Admin_db::doesItemExits(const QString &itemName) const{
+    QSqlQuery checkQuery;
+    checkQuery.prepare("SELECT itemName FROM item WHERE itemName = (:itemName)");
+    checkQuery.bindValue(":itemName",itemName);
+    if(checkQuery.exec()){
+        if(checkQuery.next()){
+            return true;
+        }
+    }else{
+        qDebug()<<"does item exist query failed "<<checkQuery.lastError();
+    }
+    return false;
+}
+
+bool Admin_db::removeItem(const QString &itemName) const{
+    bool success = false;
+
+    if (doesItemExits(itemName)){
+        QSqlQuery queryDelete;
+        queryDelete.prepare("DELETE FROM item WHERE itemName = (:itemName)");
+        queryDelete.bindValue(":itemName", itemName);
+        success = queryDelete.exec();
+        if(!success){
+            qDebug() << "remove  failed: " << queryDelete.lastError();
+        }
+    }else{
+        qDebug() << "remove user failed: item doesnt exist";
+    }
+    return success;
+}
+
+bool Admin_db::addItem(const QString &itemName, const QString &price) const{
+    bool success = false;
+    QSqlQuery queryAdd;
+    queryAdd.prepare("INSERT INTO item(itemName, price) VALUES (:itemName, :price)");
+    queryAdd.bindValue(":itemName", itemName);
+     queryAdd.bindValue(":price", price);
+    if(!queryAdd.exec()){
+        qDebug() << "add item failed: " << queryAdd.lastError();
+    }else{
+        success = true;
+    }
+    return success;
+}
+
 

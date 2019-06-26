@@ -58,6 +58,15 @@ public:
     */
     bool upDatePrice(const QString& itemName,const QString& newPrice)const;
 
+    /**
+      * Adding data to db
+      * @param itemName -> unique in db
+      * @param Price -> price to be set
+      * @return true if worked sucessfully
+    */
+    bool addItem(const QString& itemName,const QString& price)const;
+
+
 private:
     QSqlDatabase m_db;
 
