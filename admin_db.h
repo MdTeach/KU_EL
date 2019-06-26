@@ -64,7 +64,7 @@ public:
       * @param Price -> price to be set
       * @return true if worked sucessfully
     */
-    bool addItem(const QString& itemName,const QString& price)const;
+    bool addItem(const QString& itemName,const QString& cost)const;
 
 
 private:

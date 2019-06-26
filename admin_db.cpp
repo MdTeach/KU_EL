@@ -4,6 +4,7 @@
 #include <QSqlError>
 #include <QSqlRecord>
 #include <QDebug>
+#include <QList>
 
 
 Admin_db::Admin_db(const QString& path)
@@ -65,12 +66,22 @@ bool Admin_db::removeItem(const QString &itemName) const{
     return success;
 }
 
-bool Admin_db::addItem(const QString &itemName, const QString &price) const{
+void Admin_db::printAll(){
+    qDebug() << "items in in db:";
+    QSqlQuery query("SELECT * FROM item");
+    int idName = query.record().indexOf("itemName");
+    while (query.next()){
+        QString name = query.value(idName).toString();
+        qDebug() << "===" << name;
+    }
+}
+
+bool Admin_db::addItem(const QString &itemName, const QString &cost) const{
     bool success = false;
     QSqlQuery queryAdd;
-    queryAdd.prepare("INSERT INTO item(itemName, price) VALUES (:itemName, :price)");
+    queryAdd.prepare("INSERT INTO item(itemName, cost) VALUES (:itemName, :cost)");
     queryAdd.bindValue(":itemName", itemName);
-     queryAdd.bindValue(":price", price);
+     queryAdd.bindValue(":cost", cost);
     if(!queryAdd.exec()){
         qDebug() << "add item failed: " << queryAdd.lastError();
     }else{
@@ -79,4 +90,24 @@ bool Admin_db::addItem(const QString &itemName, const QString &price) const{
     return success;
 }
 
+QList<QList<QString>> Admin_db::getAllData()const{
+    QSqlQuery query("SELECT * FROM item");
+
+    int itemName_id = query.record().indexOf("itemName");
+    int cost_id = query.record().indexOf("cost");
+
+    QList<QList<QString>> data;
+    while (query.next()){
+        QList<QString> list;
+
+        QString itemName = query.value(itemName_id).toString();
+        QString cost = query.value(cost_id).toString();
+
+        list.push_front(cost);
+        list.push_front(itemName);
+
+        data.push_front(list);
+    }
+    return data;
+}
 

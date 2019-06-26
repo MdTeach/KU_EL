@@ -22,9 +22,15 @@ private slots:
 
     void on_listUserButton_clicked();
 
+    void on_listOrderButton_2_clicked();
+
+    void on_addDataButton_clicked();
+
 private:
     Ui::Admin *ui;
     void addUserList();
+    void addItemList();
+    bool isEmpty(const QString& str)const;
 };
 
 #endif // ADMIN_H
