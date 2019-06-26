@@ -26,7 +26,6 @@ CONFIG += c++11
 
 SOURCES += \
         admin.cpp \
-        admindialog.cpp \
         db_mannager.cpp \
         main.cpp \
         mainwindow.cpp \
@@ -34,15 +33,12 @@ SOURCES += \
 
 HEADERS += \
         admin.h \
-        admindialog.h \
         db_mannager.h \
-        identity.h \
         mainwindow.h \
         users.h
 
 FORMS += \
         admin.ui \
-        admindialog.ui \
         mainwindow.ui \
         users.ui
 
