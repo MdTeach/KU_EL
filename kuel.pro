@@ -26,6 +26,7 @@ CONFIG += c++11
 
 SOURCES += \
         admin.cpp \
+        admin_db.cpp \
         db_mannager.cpp \
         main.cpp \
         mainwindow.cpp \
@@ -33,6 +34,7 @@ SOURCES += \
 
 HEADERS += \
         admin.h \
+        admin_db.h \
         db_mannager.h \
         mainwindow.h \
         users.h

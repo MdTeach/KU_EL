@@ -4,7 +4,6 @@
 #include <QMainWindow>
 #include<QMessageBox>
 
-#include <admindialog.h>
 
 #include<users.h>
 #include<admin.h>
@@ -48,7 +47,6 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    AdminDialog *adminDialog;
 
     Users *users;
     Admin *admin;

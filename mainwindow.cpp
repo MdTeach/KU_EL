@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QMessageBox>
-#include "identity.h"
 
 #include <QDebug>
 #include<QMovie>
