@@ -4,18 +4,6 @@
 #include <QSqlDatabase>
 #include<QList>
 
-/**
- * \class DbManager
- *
- * \brief SQL Database Manager class
- *
- * DbManager sets up the connection with SQL database
- * and performs some basics queries. The class requires
- * existing SQL database. You can create it with sqlite:
- * 1. $ sqlite3 database.db
- * 2. sqilte> CREATE TABLE users(ids integer primary key, name text, password text);
- * 3. sqlite> .quit
- */
 class DbManager
 {
 public:
@@ -46,9 +34,13 @@ public:
      * @brief Add user data to db
      * @param email - email of user to add. email is unique
      * @param password - password of user to add
+     * @param fname
+     * @param lname
+     * @param addr
+     * @param phn
      * @return true - person added successfully, false - person not added
      */
-    bool addUser(const QString& email,const QString& password);
+    bool addUser(const QString& email,const QString& password,const QString& fname,const QString& lname,const QString& addr,const QString& phn);
 
     /**
      * @brief Remove users data from db

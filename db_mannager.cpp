@@ -34,7 +34,7 @@ bool DbManager::createTable()
     bool success = false;
 
     QSqlQuery query;
-    query.prepare("CREATE TABLE user(id INTEGER PRIMARY KEY, email TEXT,pass TEXT);");
+    query.prepare("CREATE TABLE user(id INTEGER PRIMARY KEY, email TEXT,pass TEXT, fname TEXT, lname TEXT, addr TEXT, phn TEXT);");
 
     if (!query.exec())
     {
@@ -45,12 +45,17 @@ bool DbManager::createTable()
     return success;
 }
 
-bool DbManager::addUser(const QString& email, const QString& pass){
+bool DbManager::addUser(const QString &email, const QString &pass, const QString &fname, const QString &lname, const QString &addr, const QString &phn){
     bool success = false;
     QSqlQuery queryAdd;
-    queryAdd.prepare("INSERT INTO user(email, pass) VALUES (:email, :pass)");
+    queryAdd.prepare("INSERT INTO user(email, pass, fname, lname, addr, phn) VALUES (:email, :pass, :fname, :lname, :addr, :phn)");
     queryAdd.bindValue(":email", email);
-     queryAdd.bindValue(":pass", pass);
+    queryAdd.bindValue(":pass", pass);
+    queryAdd.bindValue(":fname",fname);
+    queryAdd.bindValue(":lname",lname);
+    queryAdd.bindValue(":addr",addr);
+    queryAdd.bindValue(":phn",phn);
+
     if(!queryAdd.exec()){
         qDebug() << "add user failed: " << queryAdd.lastError();
     }else{
