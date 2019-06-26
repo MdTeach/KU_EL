@@ -57,7 +57,7 @@ QPushButton{
      <string notr="true">background-color: rgb(93, 165, 227);</string>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="homePage">
      <widget class="QFrame" name="frame_2">
@@ -207,9 +207,9 @@ border-radius:20</string>
       <widget class="QLabel" name="greetLabel_2">
        <property name="geometry">
         <rect>
-         <x>160</x>
-         <y>10</y>
-         <width>301</width>
+         <x>10</x>
+         <y>-20</y>
+         <width>481</width>
          <height>101</height>
         </rect>
        </property>
@@ -221,6 +221,39 @@ border-radius:20</string>
        <property name="text">
         <string>Order Now</string>
        </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="QWidget" name="verticalLayoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>100</y>
+         <width>391</width>
+         <height>171</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="orderItemList">
+        <property name="spacing">
+         <number>20</number>
+        </property>
+        <property name="sizeConstraint">
+         <enum>QLayout::SetFixedSize</enum>
+        </property>
+        <property name="leftMargin">
+         <number>5</number>
+        </property>
+        <property name="topMargin">
+         <number>5</number>
+        </property>
+        <property name="rightMargin">
+         <number>5</number>
+        </property>
+        <property name="bottomMargin">
+         <number>5</number>
+        </property>
+       </layout>
       </widget>
      </widget>
     </widget>

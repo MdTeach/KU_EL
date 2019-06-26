@@ -4,6 +4,8 @@
 #include<QDebug>
 #include<QList>
 
+#include<QHBoxLayout>
+
 #include<db_mannager.h>
 #include<admin_db.h>
 
@@ -14,12 +16,17 @@ Users::Users(QWidget *parent,QString uemail) :
     ui->setupUi(this);
     this->uemail = uemail;
     this->setWindowTitle("User");
+
     //Home page setup
     ui->userStack->setCurrentIndex(0);
     QString msg = "Hello "+this->uemail;
     ui->greetLabel->setText(msg);
 
+    //Set user profile
     setUserProfileInfo(uemail);
+
+    //Set order page
+    setOrderList();
 
 }
 
@@ -54,8 +61,6 @@ void Users::setUserProfileInfo(const QString& email){
     DbManager db("database.db");
     QList<QString> data = db.getUserInfo(email);
 
-    qDebug()<<"Hello SId";
-
     QString uEmail = data[0];
     QString uFname = data[1];
     QString uLname = data[2];
@@ -66,5 +71,35 @@ void Users::setUserProfileInfo(const QString& email){
     ui->emailLabel->setText("Email: "+uEmail);
     ui->phoneLabel->setText("Phn: "+uPhn);
     ui->addressLabel->setText("Addrs: "+uAddr);
+}
 
+void Users::setOrderList(){
+    Admin_db admin_db("database.db");
+    QList<QList<QString>> data = admin_db.getAllData();
+
+    for(int i=0;i<data.length();i++){
+        QList<QString> itemData = data[i];
+
+        QHBoxLayout* hbox = new QHBoxLayout();
+        QLabel* itemNameLabel = new QLabel();
+        QLabel* priceLabel = new QLabel();
+        QPushButton* addButton = new QPushButton();
+        QPushButton* removeBUtton = new QPushButton();
+
+        // Note: 0->itemName 1->itemCost
+        itemNameLabel->setText(itemData[0]);
+        priceLabel->setText("Rs "+itemData[1]);
+
+        addButton->setText("+");
+        removeBUtton->setText("-");
+
+        hbox->addWidget(itemNameLabel);
+        hbox->addWidget(priceLabel);
+        hbox->addWidget(addButton);
+        hbox->addWidget(removeBUtton);
+
+        hbox->setSpacing(50);
+
+        ui->orderItemList->addLayout(hbox);
+    }
 }

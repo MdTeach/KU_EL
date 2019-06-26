@@ -29,6 +29,7 @@ private:
     QString uemail;
 
     void setUserProfileInfo(const QString& email);
+    void setOrderList();
 };
 
 #endif // USERS_H
