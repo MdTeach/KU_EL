@@ -182,3 +182,15 @@ QList<QString> DbManager::getUserInfo(const QString& email) const{
     return  userList;
 }
 
+QList<QString> DbManager::getAllUsers(){
+    QList<QString> data;
+
+    qDebug() << "users in db:";
+    QSqlQuery query("SELECT * FROM user");
+    int idName = query.record().indexOf("email");
+    while (query.next()){
+        QString email = query.value(idName).toString();
+        data.push_front(email);
+    }
+    return data;
+}

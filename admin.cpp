@@ -53,10 +53,7 @@ void Admin::on_listUserButton_clicked()
 void Admin::addUserList(){
     DbManager db("database.db");
 
-    QList<QString> data; //db.getAllUsers();
-    data.push_back("Raw data");
-
-    qDebug()<<data[0];
+    QList<QString> data = db.getAllUsers();
 
     for(int i=0; i<data.length();i++){
         QLabel *item = new QLabel();

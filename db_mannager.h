@@ -78,6 +78,12 @@ public:
      */
     QList<QString> getUserInfo(const QString& email)const;
 
+    /**
+     * @brief Get all the email/id of the registerd users from database
+     * @return Returns list of strings
+     */
+    QList<QString> getAllUsers();
+
 private:
     QSqlDatabase m_db;
 };

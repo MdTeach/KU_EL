@@ -101,26 +101,29 @@ border-radius:20</string>
       <widget class="QLabel" name="greetLabel">
        <property name="geometry">
         <rect>
-         <x>170</x>
-         <y>30</y>
+         <x>160</x>
+         <y>10</y>
          <width>301</width>
          <height>101</height>
         </rect>
        </property>
        <property name="font">
         <font>
-         <pointsize>22</pointsize>
+         <pointsize>26</pointsize>
         </font>
        </property>
        <property name="text">
         <string>Welocome User</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
        </property>
       </widget>
       <widget class="QLabel" name="emailLabel">
        <property name="geometry">
         <rect>
          <x>150</x>
-         <y>120</y>
+         <y>80</y>
          <width>301</width>
          <height>41</height>
         </rect>
@@ -141,7 +144,7 @@ border-radius:20</string>
        <property name="geometry">
         <rect>
          <x>150</x>
-         <y>170</y>
+         <y>120</y>
          <width>301</width>
          <height>41</height>
         </rect>
@@ -162,7 +165,7 @@ border-radius:20</string>
        <property name="geometry">
         <rect>
          <x>150</x>
-         <y>220</y>
+         <y>160</y>
          <width>301</width>
          <height>41</height>
         </rect>
