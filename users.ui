@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>787</width>
-    <height>639</height>
+    <width>870</width>
+    <height>700</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -28,7 +28,7 @@ QPushButton{
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>560</x>
+      <x>600</x>
       <y>20</y>
       <width>131</width>
       <height>51</height>
@@ -47,7 +47,7 @@ QPushButton{
    <widget class="QStackedWidget" name="userStack">
     <property name="geometry">
      <rect>
-      <x>60</x>
+      <x>100</x>
       <y>0</y>
       <width>671</width>
       <height>701</height>
@@ -57,7 +57,7 @@ QPushButton{
      <string notr="true">background-color: rgb(93, 165, 227);</string>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="homePage">
      <widget class="QFrame" name="frame_2">
@@ -202,7 +202,7 @@ border-radius:20</string>
    <widget class="QPushButton" name="myOrdersButton">
     <property name="geometry">
      <rect>
-      <x>410</x>
+      <x>450</x>
       <y>20</y>
       <width>131</width>
       <height>51</height>
@@ -221,7 +221,7 @@ border-radius:20</string>
    <widget class="QPushButton" name="orderButton">
     <property name="geometry">
      <rect>
-      <x>260</x>
+      <x>300</x>
       <y>20</y>
       <width>131</width>
       <height>51</height>
@@ -240,7 +240,7 @@ border-radius:20</string>
    <widget class="QPushButton" name="homeButton">
     <property name="geometry">
      <rect>
-      <x>110</x>
+      <x>150</x>
       <y>20</y>
       <width>131</width>
       <height>51</height>

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>869</width>
-    <height>701</height>
+    <width>870</width>
+    <height>700</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -78,7 +78,7 @@ QMainWindow
      <string notr="true">background-color: rgb(255, 85, 127);</string>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="homePage">
      <property name="styleSheet">
@@ -522,7 +522,7 @@ provider</string>
     <property name="geometry">
      <rect>
       <x>540</x>
-      <y>0</y>
+      <y>-10</y>
       <width>321</width>
       <height>181</height>
      </rect>
