@@ -52,7 +52,13 @@ void MainWindow::on_pushButton_Login_clicked()
         //login failed show error message
         QMessageBox :: information (this, "Error!!", "Worng username or password");
     }else{
+        //Login in Sucess
+        //Clear the login page
+        ui->lineEdit_userName->setText("");
+        ui->lineEdit_password->setText("");
+        //Show the User window
         hide();
+
         users = new Users(this, userName);
         users->show();
     }

@@ -9,7 +9,9 @@ Users::Users(QWidget *parent,QString uemail) :
 {
     ui->setupUi(this);
     this->uemail = uemail;
-
+    this->setWindowTitle("User");
+    //Home page setup
+    ui->userStack->setCurrentIndex(0);
     QString msg = "Hello "+this->uemail;
     ui->greetLabel->setText(msg);
 
@@ -25,4 +27,19 @@ void Users::on_pushButton_clicked()
     this->close();
     QWidget *parent = this->parentWidget();
     parent->show();
+}
+
+void Users::on_homeButton_clicked()
+{
+    ui->userStack->setCurrentIndex(0);
+}
+
+void Users::on_orderButton_clicked()
+{
+    ui->userStack->setCurrentIndex(1);
+}
+
+void Users::on_myOrdersButton_clicked()
+{
+    ui->userStack->setCurrentIndex(2);
 }

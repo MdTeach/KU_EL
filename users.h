@@ -18,6 +18,12 @@ public:
 private slots:
     void on_pushButton_clicked();
 
+    void on_homeButton_clicked();
+
+    void on_orderButton_clicked();
+
+    void on_myOrdersButton_clicked();
+
 private:
     Ui::Users *ui;
     QString uemail;

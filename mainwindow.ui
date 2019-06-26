@@ -21,12 +21,9 @@ font-size:24px;
 
 
 QPushButton{
-	box-shadow:inset 0px 39px 0px -24px #e67a73;
 	background-color:#e4685d;
 	border-radius:0px;
 	border:1px solid #ffffff;
-	display:inline-block;
-	cursor:pointer;
 	color:#ffffff;
 	font-family:Arial;
 	font-size:15px;
@@ -81,7 +78,7 @@ QMainWindow
      <string notr="true">background-color: rgb(255, 85, 127);</string>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="homePage">
      <property name="styleSheet">
@@ -525,7 +522,7 @@ provider</string>
     <property name="geometry">
      <rect>
       <x>540</x>
-      <y>-10</y>
+      <y>0</y>
       <width>321</width>
       <height>181</height>
      </rect>
