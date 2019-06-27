@@ -85,12 +85,14 @@ void Users::setOrderList(){
         QHBoxLayout* hbox = new QHBoxLayout();
         QLabel* itemNameLabel = new QLabel();
         QLabel* priceLabel = new QLabel();
+        QLabel* qtyLabel = new QLabel();
         QPushButton* addButton = new QPushButton();
         QPushButton* removeBUtton = new QPushButton();
 
         // Note: 0->itemName 1->itemCost
         itemNameLabel->setText(itemData[0]);
         priceLabel->setText("Rs "+itemData[1]);
+        qtyLabel->setText("0");
 
         addButton->setText("+");
         removeBUtton->setText("-");
@@ -113,14 +115,11 @@ void Users::setOrderList(){
         n_sigmapper->setMapping(removeBUtton,temp);
         connect(n_sigmapper, SIGNAL(mapped(QString)),this, SLOT(removeItem(const QString&)));
 
-        hbox->addWidget(itemNameLabel);
-        hbox->addWidget(priceLabel);
-        hbox->addWidget(addButton);
-        hbox->addWidget(removeBUtton);
-
-        hbox->setSpacing(50);
-
-        ui->orderItemList->addLayout(hbox);
+        ui->itemName->addWidget(itemNameLabel);
+        ui->itemPrice->addWidget(priceLabel);
+        ui->itemQty->addWidget(qtyLabel);
+        ui->itemAdd->addWidget(addButton);
+        ui->itemDelete->addWidget(removeBUtton);
     }
 }
 

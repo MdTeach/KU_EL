@@ -188,10 +188,10 @@ border-radius:20</string>
      <widget class="QFrame" name="frame_3">
       <property name="geometry">
        <rect>
-        <x>100</x>
+        <x>30</x>
         <y>150</y>
-        <width>491</width>
-        <height>331</height>
+        <width>621</width>
+        <height>531</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -228,13 +228,13 @@ border-radius:20</string>
       <widget class="QWidget" name="verticalLayoutWidget">
        <property name="geometry">
         <rect>
-         <x>50</x>
+         <x>10</x>
          <y>100</y>
-         <width>391</width>
-         <height>171</height>
+         <width>121</width>
+         <height>421</height>
         </rect>
        </property>
-       <layout class="QVBoxLayout" name="orderItemList">
+       <layout class="QVBoxLayout" name="itemName">
         <property name="spacing">
          <number>20</number>
         </property>
@@ -252,6 +252,126 @@ border-radius:20</string>
         </property>
         <property name="bottomMargin">
          <number>5</number>
+        </property>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="verticalLayoutWidget_2">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>100</y>
+         <width>121</width>
+         <height>421</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="itemPrice">
+        <property name="spacing">
+         <number>20</number>
+        </property>
+        <property name="sizeConstraint">
+         <enum>QLayout::SetFixedSize</enum>
+        </property>
+        <property name="leftMargin">
+         <number>5</number>
+        </property>
+        <property name="topMargin">
+         <number>5</number>
+        </property>
+        <property name="rightMargin">
+         <number>5</number>
+        </property>
+        <property name="bottomMargin">
+         <number>5</number>
+        </property>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="verticalLayoutWidget_3">
+       <property name="geometry">
+        <rect>
+         <x>250</x>
+         <y>100</y>
+         <width>121</width>
+         <height>421</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="itemQty">
+        <property name="spacing">
+         <number>20</number>
+        </property>
+        <property name="sizeConstraint">
+         <enum>QLayout::SetFixedSize</enum>
+        </property>
+        <property name="leftMargin">
+         <number>5</number>
+        </property>
+        <property name="topMargin">
+         <number>5</number>
+        </property>
+        <property name="rightMargin">
+         <number>5</number>
+        </property>
+        <property name="bottomMargin">
+         <number>5</number>
+        </property>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="verticalLayoutWidget_4">
+       <property name="geometry">
+        <rect>
+         <x>370</x>
+         <y>100</y>
+         <width>121</width>
+         <height>421</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="itemAdd">
+        <property name="spacing">
+         <number>10</number>
+        </property>
+        <property name="sizeConstraint">
+         <enum>QLayout::SetFixedSize</enum>
+        </property>
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="verticalLayoutWidget_5">
+       <property name="geometry">
+        <rect>
+         <x>490</x>
+         <y>100</y>
+         <width>121</width>
+         <height>421</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="itemDelete">
+        <property name="spacing">
+         <number>10</number>
+        </property>
+        <property name="sizeConstraint">
+         <enum>QLayout::SetFixedSize</enum>
+        </property>
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
         </property>
        </layout>
       </widget>
