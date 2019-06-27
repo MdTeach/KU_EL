@@ -9,6 +9,8 @@
 #include<db_mannager.h>
 #include<admin_db.h>
 
+#include<QSignalMapper>
+
 Users::Users(QWidget *parent,QString uemail) :
     QMainWindow(parent),
     ui(new Ui::Users)
@@ -93,6 +95,24 @@ void Users::setOrderList(){
         addButton->setText("+");
         removeBUtton->setText("-");
 
+        QString temp = itemData[0];
+
+        //Addig the function to button
+        //QObject::connect(addButton,SIGNAL(clicked()),this,SLOT(sayHi()));
+
+
+        //Connecting add button
+        QSignalMapper* m_sigmapper = new QSignalMapper(this);
+        connect(addButton, SIGNAL(clicked()),m_sigmapper, SLOT(map()));
+        m_sigmapper->setMapping(addButton,temp);
+        connect(m_sigmapper, SIGNAL(mapped(QString)),this, SLOT(addItem(const QString&)));
+
+        //Connecting add button
+        QSignalMapper* n_sigmapper = new QSignalMapper(this);
+        connect(removeBUtton, SIGNAL(clicked()),n_sigmapper, SLOT(map()));
+        n_sigmapper->setMapping(removeBUtton,temp);
+        connect(n_sigmapper, SIGNAL(mapped(QString)),this, SLOT(removeItem(const QString&)));
+
         hbox->addWidget(itemNameLabel);
         hbox->addWidget(priceLabel);
         hbox->addWidget(addButton);
@@ -102,4 +122,16 @@ void Users::setOrderList(){
 
         ui->orderItemList->addLayout(hbox);
     }
+}
+
+void Users::sayHi(){
+    qDebug()<<"was clicked";
+}
+
+void Users::addItem(const QString& data){
+    qDebug()<<"Add "+data;
+}
+
+void Users::removeItem(const QString& data){
+    qDebug()<<"Delete "+data;
 }

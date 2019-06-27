@@ -24,6 +24,11 @@ private slots:
 
     void on_myOrdersButton_clicked();
 
+    void sayHi();
+
+    void addItem(const QString& data);
+    void removeItem(const QString& data);
+
 private:
     Ui::Users *ui;
     QString uemail;
