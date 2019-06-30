@@ -30,6 +30,7 @@ SOURCES += \
         db_mannager.cpp \
         main.cpp \
         mainwindow.cpp \
+        order_db.cpp \
         users.cpp
 
 HEADERS += \
@@ -37,6 +38,7 @@ HEADERS += \
         admin_db.h \
         db_mannager.h \
         mainwindow.h \
+        order_db.h \
         users.h
 
 FORMS += \
