@@ -2,7 +2,8 @@
 #define USERS_H
 
 #include <QMainWindow>
-
+#include<QSpinBox>
+#include<QLabel>
 namespace Ui {
 class Users;
 }
@@ -14,6 +15,10 @@ class Users : public QMainWindow
 public:
     explicit Users(QWidget *parent = nullptr, QString ueamail="");
     ~Users();
+
+    QList<QLabel*> costTracker;
+    QList<QLabel *> totalTraker;
+    QList<QSpinBox*> qtyTracker;
 
 private slots:
     void on_pushButton_clicked();
@@ -28,6 +33,9 @@ private slots:
 
     void addItem(const QString& data);
     void removeItem(const QString& data);
+
+    void on_spinBox_valueChanged(int arg1);
+    void updateData();
 
 private:
     Ui::Users *ui;

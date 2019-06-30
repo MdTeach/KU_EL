@@ -115,7 +115,7 @@ void MainWindow::on_adminButton_clicked()
 
 void MainWindow::on_userButton_clicked()
 {
-    users = new Users(this);
+    users = new Users(this,"straw");
     users->show();
     this->hide();
 }

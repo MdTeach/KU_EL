@@ -22,6 +22,13 @@
 
 QPushButton{
 	background-color: rgb(0, 112, 168);
+}
+
+QSpinBox{
+	color:white;
+}
+QLabel{
+	color:white;
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -207,7 +214,7 @@ border-radius:20</string>
       <widget class="QLabel" name="greetLabel_2">
        <property name="geometry">
         <rect>
-         <x>10</x>
+         <x>60</x>
          <y>-20</y>
          <width>481</width>
          <height>101</height>
@@ -228,8 +235,8 @@ border-radius:20</string>
       <widget class="QWidget" name="verticalLayoutWidget">
        <property name="geometry">
         <rect>
-         <x>10</x>
-         <y>100</y>
+         <x>70</x>
+         <y>60</y>
          <width>121</width>
          <height>421</height>
         </rect>
@@ -258,8 +265,8 @@ border-radius:20</string>
       <widget class="QWidget" name="verticalLayoutWidget_2">
        <property name="geometry">
         <rect>
-         <x>130</x>
-         <y>100</y>
+         <x>190</x>
+         <y>60</y>
          <width>121</width>
          <height>421</height>
         </rect>
@@ -288,8 +295,8 @@ border-radius:20</string>
       <widget class="QWidget" name="verticalLayoutWidget_3">
        <property name="geometry">
         <rect>
-         <x>250</x>
-         <y>100</y>
+         <x>310</x>
+         <y>60</y>
          <width>121</width>
          <height>421</height>
         </rect>
@@ -318,62 +325,69 @@ border-radius:20</string>
       <widget class="QWidget" name="verticalLayoutWidget_4">
        <property name="geometry">
         <rect>
-         <x>370</x>
-         <y>100</y>
+         <x>430</x>
+         <y>60</y>
          <width>121</width>
          <height>421</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="itemAdd">
         <property name="spacing">
-         <number>10</number>
+         <number>20</number>
         </property>
         <property name="sizeConstraint">
          <enum>QLayout::SetFixedSize</enum>
         </property>
         <property name="leftMargin">
-         <number>0</number>
+         <number>5</number>
         </property>
         <property name="topMargin">
-         <number>0</number>
+         <number>5</number>
         </property>
         <property name="rightMargin">
-         <number>0</number>
+         <number>5</number>
         </property>
         <property name="bottomMargin">
-         <number>0</number>
+         <number>5</number>
         </property>
        </layout>
       </widget>
-      <widget class="QWidget" name="verticalLayoutWidget_5">
+      <widget class="QLabel" name="grandTotalLabel">
        <property name="geometry">
         <rect>
-         <x>490</x>
-         <y>100</y>
-         <width>121</width>
-         <height>421</height>
+         <x>440</x>
+         <y>480</y>
+         <width>161</width>
+         <height>41</height>
         </rect>
        </property>
-       <layout class="QVBoxLayout" name="itemDelete">
-        <property name="spacing">
-         <number>10</number>
-        </property>
-        <property name="sizeConstraint">
-         <enum>QLayout::SetFixedSize</enum>
-        </property>
-        <property name="leftMargin">
-         <number>0</number>
-        </property>
-        <property name="topMargin">
-         <number>0</number>
-        </property>
-        <property name="rightMargin">
-         <number>0</number>
-        </property>
-        <property name="bottomMargin">
-         <number>0</number>
-        </property>
-       </layout>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Total: Rs 0</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="confirmOrderButton">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>460</y>
+         <width>131</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string>Confirm</string>
+       </property>
       </widget>
      </widget>
     </widget>
@@ -475,11 +489,22 @@ border-radius:20</string>
      <string>Home</string>
     </property>
    </widget>
+   <widget class="QSpinBox" name="spinBox">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>120</y>
+      <width>42</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
    <zorder>userStack</zorder>
    <zorder>pushButton</zorder>
    <zorder>myOrdersButton</zorder>
    <zorder>orderButton</zorder>
    <zorder>homeButton</zorder>
+   <zorder>spinBox</zorder>
   </widget>
  </widget>
  <resources/>

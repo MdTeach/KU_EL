@@ -82,44 +82,29 @@ void Users::setOrderList(){
     for(int i=0;i<data.length();i++){
         QList<QString> itemData = data[i];
 
-        QHBoxLayout* hbox = new QHBoxLayout();
+        QSpinBox* spinBox = new QSpinBox();
         QLabel* itemNameLabel = new QLabel();
         QLabel* priceLabel = new QLabel();
-        QLabel* qtyLabel = new QLabel();
-        QPushButton* addButton = new QPushButton();
-        QPushButton* removeBUtton = new QPushButton();
+        QLabel* totalPriceLabel = new QLabel();
 
         // Note: 0->itemName 1->itemCost
         itemNameLabel->setText(itemData[0]);
-        priceLabel->setText("Rs "+itemData[1]);
-        qtyLabel->setText("0");
+        priceLabel->setText(itemData[1]);
 
-        addButton->setText("+");
-        removeBUtton->setText("-");
+        totalPriceLabel->setText("Rs 0");
+        QString itemName = itemData[0];
 
-        QString temp = itemData[0];
+        spinBox->setObjectName(itemName+"box");
+        qtyTracker.append(spinBox);
+        totalTraker.append(totalPriceLabel);
+        costTracker.append(priceLabel);
 
-        //Addig the function to button
-        //QObject::connect(addButton,SIGNAL(clicked()),this,SLOT(sayHi()));
-
-
-        //Connecting add button
-        QSignalMapper* m_sigmapper = new QSignalMapper(this);
-        connect(addButton, SIGNAL(clicked()),m_sigmapper, SLOT(map()));
-        m_sigmapper->setMapping(addButton,temp);
-        connect(m_sigmapper, SIGNAL(mapped(QString)),this, SLOT(addItem(const QString&)));
-
-        //Connecting add button
-        QSignalMapper* n_sigmapper = new QSignalMapper(this);
-        connect(removeBUtton, SIGNAL(clicked()),n_sigmapper, SLOT(map()));
-        n_sigmapper->setMapping(removeBUtton,temp);
-        connect(n_sigmapper, SIGNAL(mapped(QString)),this, SLOT(removeItem(const QString&)));
+        connect(spinBox, SIGNAL(valueChanged(int)),SLOT(updateData()));
 
         ui->itemName->addWidget(itemNameLabel);
         ui->itemPrice->addWidget(priceLabel);
-        ui->itemQty->addWidget(qtyLabel);
-        ui->itemAdd->addWidget(addButton);
-        ui->itemDelete->addWidget(removeBUtton);
+        ui->itemQty->addWidget(spinBox);
+        ui->itemAdd->addWidget(totalPriceLabel);\
     }
 }
 
@@ -132,5 +117,28 @@ void Users::addItem(const QString& data){
 }
 
 void Users::removeItem(const QString& data){
+    qDebug();
     qDebug()<<"Delete "+data;
+}
+
+void Users::updateData(){
+    int grandTot = 0;
+    for(int i=0;i<qtyTracker.length();i++){
+        QLabel* rate = costTracker[i];
+        QLabel* totalPrice = totalTraker[i];
+        QSpinBox* spinBox = qtyTracker[i];
+
+        int sumationPrice = rate->text().toInt() * spinBox->text().toInt();
+        grandTot += sumationPrice;
+
+        qDebug()<<rate->text()<<spinBox->text();
+        totalPrice->setText("Rs "+QString::number(sumationPrice));
+    }
+    ui->grandTotalLabel->setText("Total: Rs "+QString::number(grandTot));
+
+}
+
+void Users::on_spinBox_valueChanged(int arg1)
+{
+
 }
