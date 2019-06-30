@@ -32,6 +32,7 @@ private:
     Ui::Admin *ui;
     void addUserList();
     void addItemList();
+    void addOrderList();
     bool isEmpty(const QString& str)const;
 };
 

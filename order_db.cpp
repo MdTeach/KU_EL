@@ -41,8 +41,10 @@ bool Order_db::addItem(const QString &userEmail, const QString &orderDate, const
     addQuery.bindValue(":orderList",orders);
     addQuery.bindValue(":orderStatus",orderStatus);
 
+    qDebug()<<"Trying to add .."<<userEmail<<orderDate<<orders<<orderStatus;
+
     if(!addQuery.exec()){
-        qDebug()<<addQuery.lastError();
+        qDebug()<<"add item failed: "<<addQuery.lastError();
         return  false;
     }else{
         return  true;

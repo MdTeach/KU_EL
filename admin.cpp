@@ -5,6 +5,7 @@
 
 #include <db_mannager.h>
 #include <admin_db.h>
+#include<order_db.h>
 
 #include <QList>
 
@@ -19,6 +20,9 @@ Admin::Admin(QWidget *parent) :
 
     //Adding items to the list
     addItemList();
+
+    //Adding item to users orders
+    addOrderList();
 
 
 }
@@ -61,6 +65,21 @@ void Admin::addUserList(){
         item->setText(text);
         ui->userLayout->addWidget(item);
     }
+}
+
+void Admin::addOrderList(){
+    Order_db order_db("database.db");
+    QList<QList<QString>> datas = order_db.getAllData();
+
+    //Working with the raw data
+    for(int i=0;i<datas.length();i++){
+        QList<QString> data = datas[i];
+        qDebug()<<data[0];
+        qDebug()<<data[1];
+        qDebug()<<data[2];
+        qDebug()<<data[3];
+    }
+
 }
 
 void Admin::addItemList(){

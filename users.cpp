@@ -164,15 +164,17 @@ void Users::on_confirmOrderButton_clicked()
             QString qtyStr = spinBox->text();
             QString itemNameStr = itemNameTracker[i];
 
-            orders+="<";
-            QString finalData = itemNameStr+"."+qtyStr+"."+rateStr;
-            orders+=">";
-        }
+            if(qtyStr != "0"){
+                orders+="<";
+                QString finalData = itemNameStr+"."+qtyStr+"."+rateStr;
+                orders+=finalData;
+                orders+=">";
+            }
 
+        }
         //Add item to db
         Order_db order_db("database.db");
         order_db.createTable();
         order_db.addItem(userEmail,qDate,orders);
-
     }
 }
