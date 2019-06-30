@@ -51,6 +51,7 @@ public:
     */
     bool addItem(const QString& userEmail,const QString& orderDate, const QString& orders)const;
 
+
 private:
     QSqlDatabase m_db;
 

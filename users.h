@@ -17,6 +17,7 @@ public:
     ~Users();
 
     QList<QLabel*> costTracker;
+    QList<QString> itemNameTracker;
     QList<QLabel *> totalTraker;
     QList<QSpinBox*> qtyTracker;
 
@@ -36,6 +37,8 @@ private slots:
 
     void on_spinBox_valueChanged(int arg1);
     void updateData();
+
+    void on_confirmOrderButton_clicked();
 
 private:
     Ui::Users *ui;

@@ -8,8 +8,7 @@
 
 #include<db_mannager.h>
 #include<admin_db.h>
-
-#include<QSignalMapper>
+#include<order_db.h>
 
 Users::Users(QWidget *parent,QString uemail) :
     QMainWindow(parent),
@@ -98,6 +97,7 @@ void Users::setOrderList(){
         qtyTracker.append(spinBox);
         totalTraker.append(totalPriceLabel);
         costTracker.append(priceLabel);
+        itemNameTracker.append(itemName);
 
         connect(spinBox, SIGNAL(valueChanged(int)),SLOT(updateData()));
 
@@ -132,13 +132,47 @@ void Users::updateData(){
         grandTot += sumationPrice;
 
         qDebug()<<rate->text()<<spinBox->text();
-        totalPrice->setText("Rs "+QString::number(sumationPrice));
+        totalPrice->setText(QString::number(sumationPrice));
     }
-    ui->grandTotalLabel->setText("Total: Rs "+QString::number(grandTot));
+    ui->grandTotalLabel->setText(QString::number(grandTot));
 
 }
 
 void Users::on_spinBox_valueChanged(int arg1)
 {
 
+}
+
+void Users::on_confirmOrderButton_clicked()
+{
+    qDebug()<<"Add Data";
+    if(ui->grandTotalLabel->text() ==  "0"){
+        //0 items added show error
+        qDebug()<<"Please select some items";
+    }else{
+        qDebug()<<"Adding to db..";
+        //Preparing data
+        QString userEmail = this->uemail;
+        QString qDate = "today";
+        QString orders;
+
+        for(int i=0; i<this->qtyTracker.length();i++){
+            QLabel* rate = costTracker[i];
+            QSpinBox* spinBox = qtyTracker[i];
+
+            QString rateStr = rate->text();
+            QString qtyStr = spinBox->text();
+            QString itemNameStr = itemNameTracker[i];
+
+            orders+="<";
+            QString finalData = itemNameStr+"."+qtyStr+"."+rateStr;
+            orders+=">";
+        }
+
+        //Add item to db
+        Order_db order_db("database.db");
+        order_db.createTable();
+        order_db.addItem(userEmail,qDate,orders);
+
+    }
 }
