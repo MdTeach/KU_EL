@@ -88,9 +88,9 @@ border-radius:20px;
        </property>
        <property name="geometry">
         <rect>
-         <x>70</x>
+         <x>149</x>
          <y>100</y>
-         <width>500</width>
+         <width>421</width>
          <height>300</height>
         </rect>
        </property>
@@ -112,6 +112,11 @@ border-radius:20px;
          <height>600</height>
         </size>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel{
+	  alignment: center;
+}</string>
+       </property>
        <property name="verticalScrollBarPolicy">
         <enum>Qt::ScrollBarAlwaysOn</enum>
        </property>
@@ -126,7 +131,7 @@ border-radius:20px;
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>479</width>
+          <width>400</width>
           <height>300</height>
          </rect>
         </property>

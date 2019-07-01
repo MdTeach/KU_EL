@@ -115,6 +115,10 @@ void Admin::addOrderList(){
 
 
         hbox->addWidget(orderStatus);
+        QPushButton* deleteButton = new QPushButton();
+        deleteButton->setText("Delete");
+
+        hbox->addWidget(deleteButton);
         hbox->addWidget(br);
         hbox->setMargin(12);
 
