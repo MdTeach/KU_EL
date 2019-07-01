@@ -165,7 +165,6 @@ void Users::on_confirmOrderButton_clicked()
             QString itemNameStr = itemNameTracker[i];
 
             if(qtyStr != "0"){
-                orders+="<";
                 QString finalData = itemNameStr+"."+qtyStr+"."+rateStr;
                 orders+=finalData;
                 orders+=">";

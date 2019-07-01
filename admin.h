@@ -2,7 +2,7 @@
 #define ADMIN_H
 
 #include <QMainWindow>
-
+#include <QList>
 namespace Ui {
 class Admin;
 }
@@ -33,6 +33,7 @@ private:
     void addUserList();
     void addItemList();
     void addOrderList();
+    QList<QList<QString>> getFromattedList(QString rawData);
     bool isEmpty(const QString& str)const;
 };
 
