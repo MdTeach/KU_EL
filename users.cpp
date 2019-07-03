@@ -10,18 +10,13 @@
 #include<admin_db.h>
 #include<order_db.h>
 
-Users::Users(QWidget *parent,QString uemail) :
-    QMainWindow(parent),
-    ui(new Ui::Users)
-{
+Users::Users(QWidget *parent,QString uemail) : QMainWindow(parent), ui(new Ui::Users) {
     ui->setupUi(this);
     this->uemail = uemail;
     this->setWindowTitle("User");
 
     //Home page setup
     ui->userStack->setCurrentIndex(0);
-    QString msg = "Hello "+this->uemail;
-    ui->greetLabel->setText(msg);
 
     //Set user profile
     setUserProfileInfo(uemail);
@@ -31,34 +26,29 @@ Users::Users(QWidget *parent,QString uemail) :
 
 }
 
-Users::~Users()
-{
+Users::~Users() {
     delete ui;
 }
 
-void Users::on_pushButton_clicked()
-{
+void Users::on_logout_clicked() {
     this->close();
     QWidget *parent = this->parentWidget();
     parent->show();
 }
 
-void Users::on_homeButton_clicked()
-{
+void Users::on_home_clicked() {
     ui->userStack->setCurrentIndex(0);
 }
 
-void Users::on_orderButton_clicked()
-{
+void Users::on_order_clicked() {
     ui->userStack->setCurrentIndex(1);
 }
 
-void Users::on_myOrdersButton_clicked()
-{
+void Users::on_myOrders_clicked() {
     ui->userStack->setCurrentIndex(2);
 }
 
-void Users::setUserProfileInfo(const QString& email){
+void Users::setUserProfileInfo(const QString& email) {
     DbManager db("database.db");
     QList<QString> data = db.getUserInfo(email);
 
@@ -71,10 +61,10 @@ void Users::setUserProfileInfo(const QString& email){
     ui->greetLabel->setText("Welcome "+uFname);
     ui->emailLabel->setText("Email: "+uEmail);
     ui->phoneLabel->setText("Phn: "+uPhn);
-    ui->addressLabel->setText("Addrs: "+uAddr);
+    ui->addressLabel->setText(uAddr);
 }
 
-void Users::setOrderList(){
+void Users::setOrderList() {
     Admin_db admin_db("database.db");
     QList<QList<QString>> data = admin_db.getAllData();
 
@@ -104,24 +94,19 @@ void Users::setOrderList(){
         ui->itemName->addWidget(itemNameLabel);
         ui->itemPrice->addWidget(priceLabel);
         ui->itemQty->addWidget(spinBox);
-        ui->itemAdd->addWidget(totalPriceLabel);\
+        ui->itemAdd->addWidget(totalPriceLabel);
     }
 }
 
-void Users::sayHi(){
-    qDebug()<<"was clicked";
-}
-
-void Users::addItem(const QString& data){
+void Users::addItem(const QString& data) {
     qDebug()<<"Add "+data;
 }
 
-void Users::removeItem(const QString& data){
-    qDebug();
+void Users::removeItem(const QString& data) {
     qDebug()<<"Delete "+data;
 }
 
-void Users::updateData(){
+void Users::updateData() {
     int grandTot = 0;
     for(int i=0;i<qtyTracker.length();i++){
         QLabel* rate = costTracker[i];
@@ -149,7 +134,7 @@ void Users::on_confirmOrderButton_clicked()
     if(ui->grandTotalLabel->text() ==  "0"){
         //0 items added show error
         qDebug()<<"Please select some items";
-    }else{
+    } else {
         qDebug()<<"Adding to db..";
         //Preparing data
         QString userEmail = this->uemail;

@@ -27,8 +27,6 @@ public:
     void showMessage(MainWindow* context, const QString message);
 
 private slots:
-    void on_pushButton_Login_clicked();
-
     void on_homeButton_clicked();
 
     void on_loginButton_clicked();
@@ -37,13 +35,13 @@ private slots:
 
     void on_aboutButton_clicked();
 
-    void on_pushButton_register_clicked();
-
     void on_adminButton_clicked();
 
     void on_userButton_clicked();
 
-    void on_registerButton_2_clicked();
+    void on_pushButton_login_clicked();
+
+    void on_pushButton_register_clicked();
 
 private:
     Ui::MainWindow *ui;

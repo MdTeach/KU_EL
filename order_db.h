@@ -40,17 +40,7 @@ public:
     */
     void printAll();
 
-
-    /**
-      * Adding data to db
-      * @param userEmail -> unique in db
-      * @param orderDate -> price to be set
-      * @param orders -> a long complex string
-      * @note also orderStatus -> enum -> {Ordered, Washing, Deliverded} -> default to Ordered
-      * @return true if worked sucessfully
-    */
     bool addItem(const QString& userEmail,const QString& orderDate, const QString& orders)const;
-
 
 private:
     QSqlDatabase m_db;

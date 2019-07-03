@@ -16,13 +16,13 @@ public:
     ~Admin();
 
 private slots:
-    void on_pushButton_clicked();
+    void on_logoutButton_clicked();
 
-    void on_listOrderButton_clicked();
+    void on_listOrdersButton_clicked();
 
-    void on_listUserButton_clicked();
+    void on_listItemsButton_clicked();
 
-    void on_listOrderButton_2_clicked();
+    void on_listUsersButton_clicked();
 
     void on_addDataButton_clicked();
 
@@ -33,7 +33,7 @@ private:
     void addUserList();
     void addItemList();
     void addOrderList();
-    QList<QList<QString>> getFromattedList(QString rawData);
+    QList<QList<QString>> getFormattedList(QString rawData);
     bool isEmpty(const QString& str)const;
 };
 

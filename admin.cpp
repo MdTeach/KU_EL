@@ -9,72 +9,51 @@
 
 #include <QList>
 
-Admin::Admin(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::Admin)
-{
+Admin::Admin(QWidget *parent) : QMainWindow(parent), ui(new Ui::Admin) {
     ui->setupUi(this);
 
-    //Adding the list of users
-    addUserList();
-
-    //Adding items to the list
-    addItemList();
-
-    //Adding item to users orders
+    //show all user orders
     addOrderList();
 
+    //show items
+    addItemList();
+
+    //show all user emails
+    addUserList();
 
 }
 
-Admin::~Admin()
-{
+Admin::~Admin() {
     delete ui;
 }
 
-void Admin::on_pushButton_clicked()
-{
+void Admin::on_listOrdersButton_clicked() {
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+void Admin::on_listItemsButton_clicked() {
+    ui->stackedWidget->setCurrentIndex(1);
+}
+
+void Admin::on_listUsersButton_clicked() {
+    ui->stackedWidget->setCurrentIndex(2);
+}
+
+void Admin::on_logoutButton_clicked() {
     this->close();
     QWidget *parent = this->parentWidget();
     parent->show();
 }
 
 
-
-void Admin::on_listOrderButton_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(0);
-
-}
-
-
-void Admin::on_listUserButton_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(2);
-}
-
-
-void Admin::addUserList(){
-    DbManager db("database.db");
-
-    QList<QString> data = db.getAllUsers();
-
-    for(int i=0; i<data.length();i++){
-        QLabel *item = new QLabel();
-        QString text = QString::number((i+1))+") "+data[i];
-        item->setText(text);
-        ui->userLayout->addWidget(item);
-    }
-}
-
-void Admin::addOrderList(){
+void Admin::addOrderList() {
     Order_db order_db("database.db");
     QList<QList<QString>> datas = order_db.getAllData();
 
     //Working with the raw data
-    QVBoxLayout* parentHbox = new QVBoxLayout(); //= new QVBoxLayout();
+    QVBoxLayout* parentVbox = new QVBoxLayout(); //= new QVBoxLayout();
     for(int i=0;i<datas.length();i++){
-        QVBoxLayout* hbox = new QVBoxLayout();
+        QVBoxLayout* vbox = new QVBoxLayout();
 
         QList<QString> data = datas[i];
         qDebug()<<data[0];
@@ -90,16 +69,16 @@ void Admin::addOrderList(){
         orderDate->setText("Orderd on "+data[1]);
         orderStatus->setText("Order status: "+data[3]);
 
-        QList<QList <QString>> qlist_data = getFromattedList(data[2]);
+        QList<QList <QString>> qlist_data = getFormattedList(data[2]);
 
-        QLabel* oder_num = new QLabel();
-        oder_num->setText("Order no " + QString::number(i+1));
-        hbox->addWidget(oder_num);
+        QLabel* order_num = new QLabel();
+        order_num->setText("Order no " + QString::number(i+1));
+        vbox->addWidget(order_num);
 
-        hbox->addWidget(userEmail);
-        hbox->addWidget(orderDate);
+        vbox->addWidget(userEmail);
+        vbox->addWidget(orderDate);
         QLabel* br = new QLabel();
-        hbox->addWidget(br);
+        vbox->addWidget(br);
 
 
         //Adding ordered items
@@ -108,23 +87,23 @@ void Admin::addOrderList(){
             for(int j=0;j<list_of_orders_string.length();j++){
                 QLabel* order_item_label = new QLabel();
                 order_item_label->setText(list_of_orders_string[j]);
-                hbox->addWidget(order_item_label);
+                vbox->addWidget(order_item_label);
             }
-            hbox->addWidget(br);
+            vbox->addWidget(br);
         }
 
 
-        hbox->addWidget(orderStatus);
-        hbox->addWidget(br);
-        hbox->setMargin(12);
+        vbox->addWidget(orderStatus);
+        vbox->addWidget(br);
+        vbox->setMargin(12);
 
-        parentHbox->addItem(hbox);
+        parentVbox->addItem(vbox);
     }
     //ui->viewOrderList->setLayout(parentHbox);
-    ui->scrollAreaWidgetContents->setLayout(parentHbox);
+    ui->scrollAreaWidgetContents->setLayout(parentVbox);
 }
 
-void Admin::addItemList(){
+void Admin::addItemList() {
     Admin_db admin_db("database.db");
 
     //Gets all data from the db
@@ -166,14 +145,20 @@ void Admin::addItemList(){
 
 }
 
+void Admin::addUserList() {
+    DbManager db("database.db");
 
-void Admin::on_listOrderButton_2_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(1);
+    QList<QString> data = db.getAllUsers();
+
+    for(int i=0; i<data.length();i++){
+        QLabel *item = new QLabel();
+        QString text = QString::number((i+1))+") "+data[i];
+        item->setText(text);
+        ui->userLayout->addWidget(item);
+    }
 }
 
-void Admin::on_addDataButton_clicked()
-{
+void Admin::on_addDataButton_clicked() {
     //Adding item to the db
     Admin_db admin_db("database.db");
     admin_db.createTable();
@@ -200,13 +185,12 @@ void Admin::on_addDataButton_clicked()
 
 }
 
-bool Admin::isEmpty(const QString& str)const{
+bool Admin::isEmpty(const QString& str)const {
     if(str == "" || str == " ") return true;
     return false;
 }
 
-void Admin::on_reoveItemButton_clicked()
-{
+void Admin::on_reoveItemButton_clicked() {
     //Remove the list content
     QString itemName = ui->removeItemName->text();
     if(isEmpty(itemName)){
@@ -229,7 +213,7 @@ void Admin::on_reoveItemButton_clicked()
 
 }
 
-QList<QList <QString>> Admin::getFromattedList(QString rawData){
+QList<QList <QString>> Admin::getFormattedList(QString rawData) {
     QList<QList<QString>> data;
     QStringList orders = rawData.split('>');
     for(int i=0;i<orders.length()-1;i++){

@@ -78,7 +78,7 @@ QMainWindow
      <string notr="true">background-color: rgb(255, 85, 127);</string>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="homePage">
      <property name="styleSheet">
@@ -204,7 +204,7 @@ QMainWindow
           <item>
            <layout class="QVBoxLayout" name="verticalLayout">
             <item>
-             <widget class="QLineEdit" name="lineEdit_userName"/>
+             <widget class="QLineEdit" name="lineEdit_email"/>
             </item>
             <item>
              <widget class="QLineEdit" name="lineEdit_password">
@@ -220,7 +220,7 @@ QMainWindow
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_2">
           <item>
-           <widget class="QPushButton" name="pushButton_Login">
+           <widget class="QPushButton" name="pushButton_login">
             <property name="styleSheet">
              <string notr="true">
 QPushButton:hover 
@@ -267,7 +267,7 @@ background-color: rgb(240, 80, 120);</string>
          <x>40</x>
          <y>70</y>
          <width>371</width>
-         <height>215</height>
+         <height>230</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -353,7 +353,7 @@ backgrooundcolor:rgb(255, 255, 255);
         </item>
        </layout>
       </widget>
-      <widget class="QPushButton" name="registerButton_2">
+      <widget class="QPushButton" name="pushButton_register">
        <property name="geometry">
         <rect>
          <x>170</x>
@@ -518,7 +518,7 @@ provider</string>
      <string>Admin</string>
     </property>
    </widget>
-   <widget class="QLabel" name="welcomeLabel">
+   <widget class="QLabel" name="gifLabel">
     <property name="geometry">
      <rect>
       <x>540</x>
@@ -543,7 +543,7 @@ provider</string>
    <zorder>registerButton</zorder>
    <zorder>userButton</zorder>
    <zorder>adminButton</zorder>
-   <zorder>welcomeLabel</zorder>
+   <zorder>gifLabel</zorder>
    <zorder>aboutButton</zorder>
   </widget>
  </widget>

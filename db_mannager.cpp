@@ -4,40 +4,34 @@
 #include <QSqlRecord>
 #include <QDebug>
 
-DbManager::DbManager(const QString &path)
-{
+DbManager::DbManager(const QString &path) {
     m_db = QSqlDatabase::addDatabase("QSQLITE");
     m_db.setDatabaseName(path);
 
-    if (!m_db.open()){
-        qDebug() << "Error: connection with database fail";
-    }else{
-        qDebug() << "Database: connection ok";
+    if (!m_db.open()) {
+        qDebug() << "Failed to connect to database";
+    } else {
+        qDebug() << "Connected...";
     }
 }
 
-DbManager::~DbManager()
-{
-    if (m_db.isOpen())
-    {
+DbManager::~DbManager() {
+    if (m_db.isOpen()) {
         m_db.close();
     }
 }
 
-bool DbManager::isOpen() const
-{
+bool DbManager::isOpen() const {
     return m_db.isOpen();
 }
 
-bool DbManager::createTable()
-{
+bool DbManager::createTable() {
     bool success = false;
 
     QSqlQuery query;
-    query.prepare("CREATE TABLE user(id INTEGER PRIMARY KEY, email TEXT,pass TEXT, fname TEXT, lname TEXT, addr TEXT, phn TEXT);");
+    query.prepare("CREATE TABLE user(id INTEGER PRIMARY KEY, fname TEXT, lname TEXT, email TEXT, pass TEXT, addr TEXT, phn TEXT);");
 
-    if (!query.exec())
-    {
+    if (!query.exec()) {
         qDebug() << "Couldn't create the table 'user': one might already exist.";
         success = false;
     }
@@ -45,20 +39,20 @@ bool DbManager::createTable()
     return success;
 }
 
-bool DbManager::addUser(const QString &email, const QString &pass, const QString &fname, const QString &lname, const QString &addr, const QString &phn){
+bool DbManager::addUser(const QString &fname, const QString &lname, const QString &email, const QString &pass, const QString &addr, const QString &phn){
     bool success = false;
     QSqlQuery queryAdd;
-    queryAdd.prepare("INSERT INTO user(email, pass, fname, lname, addr, phn) VALUES (:email, :pass, :fname, :lname, :addr, :phn)");
-    queryAdd.bindValue(":email", email);
-    queryAdd.bindValue(":pass", pass);
+    queryAdd.prepare("INSERT INTO user(fname, lname, email, pass, addr, phn) VALUES (:fname, :lname, :email, :pass, :addr, :phn)");
     queryAdd.bindValue(":fname",fname);
     queryAdd.bindValue(":lname",lname);
+    queryAdd.bindValue(":email", email);
+    queryAdd.bindValue(":pass", pass);
     queryAdd.bindValue(":addr",addr);
     queryAdd.bindValue(":phn",phn);
 
-    if(!queryAdd.exec()){
+    if(!queryAdd.exec()) {
         qDebug() << "add user failed: " << queryAdd.lastError();
-    }else{
+    } else {
         success = true;
     }
     return success;
@@ -82,19 +76,6 @@ bool DbManager::removeUser(const QString& name){
     }
     return success;
 }
-
-void DbManager::printAllUsers() const{
-    qDebug() << "users in db:";
-    QSqlQuery query("SELECT * FROM user");
-    int idName = query.record().indexOf("email");
-    while (query.next())
-    {
-        QString email = query.value(idName).toString();
-        qDebug() << "===" << email;
-    }
-}
-
-
 
 bool DbManager::emailExists(const QString &email){
     QSqlQuery checkQuery;

@@ -32,7 +32,7 @@ QLabel{
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="logout">
     <property name="geometry">
      <rect>
       <x>600</x>
@@ -64,7 +64,7 @@ QLabel{
      <string notr="true">background-color: rgb(93, 165, 227);</string>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="homePage">
      <widget class="QFrame" name="frame_2">
@@ -89,7 +89,7 @@ border-radius:20</string>
       <widget class="QFrame" name="frame">
        <property name="geometry">
         <rect>
-         <x>20</x>
+         <x>0</x>
          <y>20</y>
          <width>151</width>
          <height>141</height>
@@ -120,7 +120,7 @@ border-radius:20</string>
         </font>
        </property>
        <property name="text">
-        <string>Welocome User</string>
+        <string>Welcome User</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -129,9 +129,9 @@ border-radius:20</string>
       <widget class="QLabel" name="emailLabel">
        <property name="geometry">
         <rect>
-         <x>150</x>
-         <y>80</y>
-         <width>301</width>
+         <x>130</x>
+         <y>110</y>
+         <width>351</width>
          <height>41</height>
         </rect>
        </property>
@@ -150,10 +150,10 @@ border-radius:20</string>
       <widget class="QLabel" name="addressLabel">
        <property name="geometry">
         <rect>
-         <x>150</x>
-         <y>120</y>
-         <width>301</width>
-         <height>41</height>
+         <x>140</x>
+         <y>80</y>
+         <width>351</width>
+         <height>21</height>
         </rect>
        </property>
        <property name="font">
@@ -171,9 +171,9 @@ border-radius:20</string>
       <widget class="QLabel" name="phoneLabel">
        <property name="geometry">
         <rect>
-         <x>150</x>
-         <y>160</y>
-         <width>301</width>
+         <x>130</x>
+         <y>145</y>
+         <width>351</width>
          <height>41</height>
         </rect>
        </property>
@@ -226,7 +226,7 @@ border-radius:20</string>
         </font>
        </property>
        <property name="text">
-        <string>Order Now</string>
+        <string>Place Order</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -416,10 +416,10 @@ border-radius:20</string>
      <widget class="QFrame" name="frame_4">
       <property name="geometry">
        <rect>
-        <x>100</x>
+        <x>30</x>
         <y>150</y>
-        <width>491</width>
-        <height>331</height>
+        <width>621</width>
+        <height>531</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -435,8 +435,8 @@ border-radius:20</string>
       <widget class="QLabel" name="greetLabel_3">
        <property name="geometry">
         <rect>
-         <x>160</x>
-         <y>10</y>
+         <x>210</x>
+         <y>-20</y>
          <width>301</width>
          <height>101</height>
         </rect>
@@ -453,7 +453,7 @@ border-radius:20</string>
      </widget>
     </widget>
    </widget>
-   <widget class="QPushButton" name="myOrdersButton">
+   <widget class="QPushButton" name="myOrders">
     <property name="geometry">
      <rect>
       <x>450</x>
@@ -472,7 +472,7 @@ border-radius:20</string>
      <string>My Orders</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="orderButton">
+   <widget class="QPushButton" name="order">
     <property name="geometry">
      <rect>
       <x>300</x>
@@ -491,7 +491,7 @@ border-radius:20</string>
      <string>Order</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="homeButton">
+   <widget class="QPushButton" name="home">
     <property name="geometry">
      <rect>
       <x>150</x>
@@ -510,22 +510,11 @@ border-radius:20</string>
      <string>Home</string>
     </property>
    </widget>
-   <widget class="QSpinBox" name="spinBox">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>120</y>
-      <width>42</width>
-      <height>22</height>
-     </rect>
-    </property>
-   </widget>
    <zorder>userStack</zorder>
-   <zorder>pushButton</zorder>
-   <zorder>myOrdersButton</zorder>
-   <zorder>orderButton</zorder>
-   <zorder>homeButton</zorder>
-   <zorder>spinBox</zorder>
+   <zorder>logout</zorder>
+   <zorder>myOrders</zorder>
+   <zorder>order</zorder>
+   <zorder>home</zorder>
   </widget>
  </widget>
  <resources/>

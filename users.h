@@ -22,15 +22,13 @@ public:
     QList<QSpinBox*> qtyTracker;
 
 private slots:
-    void on_pushButton_clicked();
+    void on_logout_clicked();
 
-    void on_homeButton_clicked();
+    void on_home_clicked();
 
-    void on_orderButton_clicked();
+    void on_order_clicked();
 
-    void on_myOrdersButton_clicked();
-
-    void sayHi();
+    void on_myOrders_clicked();
 
     void addItem(const QString& data);
     void removeItem(const QString& data);
