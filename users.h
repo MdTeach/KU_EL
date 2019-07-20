@@ -4,6 +4,10 @@
 #include <QMainWindow>
 #include<QSpinBox>
 #include<QLabel>
+
+#include<QHBoxLayout>
+
+
 namespace Ui {
 class Users;
 }
@@ -46,6 +50,9 @@ private:
 
     void setUserProfileInfo(const QString& email);
     void setOrderList();
+    void setMyOrdersList();
+    QList<QList <QString>> getFromattedList(QString rawData);
+
 };
 
 #endif // USERS_H

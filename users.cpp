@@ -29,6 +29,9 @@ Users::Users(QWidget *parent,QString uemail) :
     //Set order page
     setOrderList();
 
+    //Set my orders
+    setMyOrdersList();
+
 }
 
 Users::~Users()
@@ -145,12 +148,8 @@ void Users::on_spinBox_valueChanged(int arg1)
 
 void Users::on_confirmOrderButton_clicked()
 {
-    qDebug()<<"Add Data";
     if(ui->grandTotalLabel->text() ==  "0"){
-        //0 items added show error
-        qDebug()<<"Please select some items";
     }else{
-        qDebug()<<"Adding to db..";
         //Preparing data
         QString userEmail = this->uemail;
         QString qDate = "today";
@@ -176,4 +175,80 @@ void Users::on_confirmOrderButton_clicked()
         order_db.createTable();
         order_db.addItem(userEmail,qDate,orders);
     }
+}
+
+void Users::setMyOrdersList(){
+    Order_db order_db("database.db");
+    //QList<QList<QString>> datas = order_db.getUserOrdersData(this->uemail);
+    QList<QList<QString>> datas = order_db.getAllData();
+
+    //Working with the raw data
+    QVBoxLayout* parentHbox = new QVBoxLayout(); //= new QVBoxLayout();
+    for(int i=0;i<datas.length();i++){
+        QVBoxLayout* hbox = new QVBoxLayout();
+
+        QList<QString> data = datas[i];
+        qDebug()<<data[0];
+        qDebug()<<data[1];
+        qDebug()<<data[2];
+        qDebug()<<data[3];
+
+        QLabel* userEmail = new QLabel();
+        QLabel* orderDate = new QLabel();
+        QLabel* orderStatus = new QLabel();
+
+        userEmail->setText("User Email "+data[0]);
+        orderDate->setText("Orderd on "+data[1]);
+        orderStatus->setText("Order status: "+data[3]);
+
+        QList<QList <QString>> qlist_data = getFromattedList(data[2]);
+
+        QLabel* oder_num = new QLabel();
+        oder_num->setText("Order no " + QString::number(i+1));
+        hbox->addWidget(oder_num);
+
+        hbox->addWidget(userEmail);
+        hbox->addWidget(orderDate);
+        QLabel* br = new QLabel();
+        hbox->addWidget(br);
+
+
+        //Adding ordered items
+        for(int i=0;i<qlist_data.length();i++){
+            QList<QString> list_of_orders_string = qlist_data[i];
+            for(int j=0;j<list_of_orders_string.length();j++){
+                QLabel* order_item_label = new QLabel();
+                order_item_label->setText(list_of_orders_string[j]);
+                hbox->addWidget(order_item_label);
+            }
+            hbox->addWidget(br);
+        }
+
+
+        hbox->addWidget(orderStatus);
+        hbox->addWidget(br);
+        hbox->setMargin(12);
+
+        parentHbox->addItem(hbox);
+    }
+    //ui->viewOrderList->setLayout(parentHbox);
+    ui->scrollAreaWidgetContents->setLayout(parentHbox);
+}
+
+
+QList<QList <QString>> Users::getFromattedList(QString rawData){
+    QList<QList<QString>> data;
+    QStringList orders = rawData.split('>');
+    for(int i=0;i<orders.length()-1;i++){
+        QList<QString> list_of_orders_string;
+        QStringList order = orders[i].split('.');
+        //itemName ->0
+        list_of_orders_string.push_back("Item Name: "+order[0]);
+        //itemQTy ->1
+        list_of_orders_string.push_back("Qty: "+order[1]);
+        //itemRate->2
+        list_of_orders_string.push_back("Item Rate: Rs "+order[2]);
+        data.push_front(list_of_orders_string);
+    }
+    return data;
 }
