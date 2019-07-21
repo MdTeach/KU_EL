@@ -17,25 +17,28 @@
    <string notr="true">*{
   font-family:century gothic;
 font-size:24px;
-}
+	color:#ffffff;
 
+}
 
 QPushButton{
 	background-color:#e4685d;
-	border-radius:0px;
 	border:1px solid #ffffff;
 	color:#ffffff;
 	font-family:Arial;
 	font-size:15px;
 	padding:10px 27px;
 }
+
 QPushButton:hover {
 	background-color:#eb675e;
 }
+
 QPushButton:active {
 	position:relative;
 	top:1px;
 }
+
 QLabel
 {
   color:white;
@@ -55,16 +58,14 @@ border-radius:15px;
 background:#49ebff;
 }
 
-
 QMainWindow
 {
-
 	background-color: rgb(198, 66, 99);
 	padding:10px;
 }
 
-
 QMessageBox QLabel{
+	font-size: 15px;
 	color: rgb(0,0,0);
 }
 </string>

@@ -153,6 +153,9 @@ void Users::on_confirmOrderButton_clicked()
         //Preparing data
         QString userEmail = this->uemail;
         QString qDate = QDate::currentDate().toString();
+        QString qTime = QTime::currentTime().toString();
+        qDate = qDate + " at " + qTime;
+        //qDebug() << concatinated;
         QString orders;
 
         for(int i=0; i<this->qtyTracker.length();i++){
@@ -202,17 +205,16 @@ void Users::setMyOrdersList(){
         QLabel* orderDate = new QLabel();
         QLabel* orderStatus = new QLabel();
 
-        userEmail->setText("User Email "+data[0]);
-        orderDate->setText("Orderd on "+data[1]);
+        userEmail->setText(data[0]);
+        orderDate->setText("Ordered on "+data[1]);
         orderStatus->setText("Order status: "+data[3]);
 
         QList<QList <QString>> qlist_data = getFromattedList(data[2]);
 
         QLabel* oder_num = new QLabel();
-        oder_num->setText("Order no " + QString::number(i+1));
+        oder_num->setText("#" + QString::number(i+1) /*+ " " + data[0]*/);
         hbox->addWidget(oder_num);
-
-        hbox->addWidget(userEmail);
+//        hbox->addWidget();
         hbox->addWidget(orderDate);
         QLabel* br = new QLabel();
         hbox->addWidget(br);

@@ -115,7 +115,7 @@ void MainWindow::on_registerButton_2_clicked()
     QString pass2 = ui->Password_re->text();
 
     // Regular Expression
-    QRegExp re("\\d*");
+    QRegExp re("^[0-9]{10}$");
     // DataValidation
     if(isEmpty(fName)){
         this->showMessage(this, "Firstname field is empty");

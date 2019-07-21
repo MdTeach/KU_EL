@@ -64,7 +64,7 @@ QLabel{
      <string notr="true">background-color: rgb(93, 165, 227);</string>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="homePage">
      <widget class="QFrame" name="frame_2">
@@ -499,7 +499,7 @@ border-radius:20</string>
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>450</width>
+          <width>454</width>
           <height>441</height>
          </rect>
         </property>
