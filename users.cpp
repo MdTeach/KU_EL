@@ -3,9 +3,7 @@
 
 #include<QDebug>
 #include<QList>
-
 #include<QHBoxLayout>
-
 #include<db_mannager.h>
 #include<admin_db.h>
 #include<order_db.h>
@@ -176,13 +174,18 @@ void Users::on_confirmOrderButton_clicked()
         Order_db order_db("database.db");
         order_db.createTable();
         order_db.addItem(userEmail,qDate,orders);
+
+        //End and exit
+        this->close();
+        QWidget *parent = this->parentWidget();
+        parent->show();
     }
 }
 
 void Users::setMyOrdersList(){
     Order_db order_db("database.db");
     //QList<QList<QString>> datas = order_db.getUserOrdersData(this->uemail);
-    QList<QList<QString>> datas = order_db.getAllData();
+    QList<QList<QString>> datas = order_db.getUserData(this->uemail);
 
     //Working with the raw data
     QVBoxLayout* parentHbox = new QVBoxLayout(); //= new QVBoxLayout();

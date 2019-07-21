@@ -5,6 +5,8 @@
 #include <QDebug>
 #include <QCryptographicHash>
 
+
+
 DbManager::DbManager(const QString &path)
 {
     m_db = QSqlDatabase::addDatabase("QSQLITE");

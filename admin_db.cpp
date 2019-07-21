@@ -105,7 +105,6 @@ QList<QList<QString>> Admin_db::getAllData()const{
 
         list.push_front(cost);
         list.push_front(itemName);
-
         data.push_front(list);
     }
     return data;
