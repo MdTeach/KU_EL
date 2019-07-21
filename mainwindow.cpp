@@ -5,7 +5,7 @@
 #include <QDebug>
 #include<QMovie>
 #include <db_mannager.h>
-
+#include<QRegularExpression>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -115,7 +115,9 @@ void MainWindow::on_registerButton_2_clicked()
     QString pass2 = ui->Password_re->text();
 
     // Regular Expression
-    QRegExp re("\\d*");
+//    QRegularExpression re("^[0,9]{10}$");
+    QRegularExpression re("^[0-9]{10}$");
+
     // DataValidation
     if(isEmpty(fName)){
         this->showMessage(this, "Firstname field is empty");
@@ -125,7 +127,7 @@ void MainWindow::on_registerButton_2_clicked()
         this->showMessage(this, "Email field is empty");
     }else if(isEmpty(addr)){
         this->showMessage(this, "Address field is empty");
-    }else if(!re.exactMatch(phn)){
+    }else if(!(re.match(phn).hasMatch())){
         this->showMessage(this, "Phone not entered correctly.");
     }else if(isEmpty(pass1)){
         this->showMessage(this, "Password 1 field is empty");
