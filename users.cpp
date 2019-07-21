@@ -10,6 +10,8 @@
 #include<admin_db.h>
 #include<order_db.h>
 
+#include <QDate>
+
 Users::Users(QWidget *parent,QString uemail) :
     QMainWindow(parent),
     ui(new Ui::Users)
@@ -152,7 +154,7 @@ void Users::on_confirmOrderButton_clicked()
     }else{
         //Preparing data
         QString userEmail = this->uemail;
-        QString qDate = "today";
+        QString qDate = QDate::currentDate().toString();
         QString orders;
 
         for(int i=0; i<this->qtyTracker.length();i++){

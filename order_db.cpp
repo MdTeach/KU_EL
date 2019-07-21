@@ -78,8 +78,8 @@ QList<QList<QString>> Order_db::getAllData()const{
     return data;
 }
 
-QList<QList<QString>> Order_db::getUserOrdersData(QString uemail){
-    return  0;
-}
+//QList<QList<QString>> Order_db::getUserOrdersData(QString uemail){
+//    return  0;
+//}
 
 

@@ -3,6 +3,7 @@
 #include <QSqlError>
 #include <QSqlRecord>
 #include <QDebug>
+#include <QCryptographicHash>
 
 DbManager::DbManager(const QString &path)
 {
@@ -47,10 +48,11 @@ bool DbManager::createTable()
 
 bool DbManager::addUser(const QString &email, const QString &pass, const QString &fname, const QString &lname, const QString &addr, const QString &phn){
     bool success = false;
+    QString hashedPass = QString(QCryptographicHash::hash("pass", QCryptographicHash::Sha256));
     QSqlQuery queryAdd;
     queryAdd.prepare("INSERT INTO user(email, pass, fname, lname, addr, phn) VALUES (:email, :pass, :fname, :lname, :addr, :phn)");
     queryAdd.bindValue(":email", email);
-    queryAdd.bindValue(":pass", pass);
+    queryAdd.bindValue(":pass", hashedPass);
     queryAdd.bindValue(":fname",fname);
     queryAdd.bindValue(":lname",lname);
     queryAdd.bindValue(":addr",addr);
@@ -106,8 +108,9 @@ bool DbManager::emailExists(const QString &email){
         }
     }else{
         qDebug()<<"does email exist query failed "<<checkQuery.lastError();
+
     }
-    return false;
+        return false;
 }
 
 bool DbManager::removeAllUsers()
@@ -131,11 +134,11 @@ bool DbManager::removeAllUsers()
 
 bool DbManager::userAuth(const QString &email, const QString &pass)const{
     bool exists = false;
-
+    QString hashedPass = QString(QCryptographicHash::hash("pass", QCryptographicHash::Sha256));
     QSqlQuery checkQuery;
     checkQuery.prepare("SELECT email FROM user WHERE email = (:email) AND pass = (:pass)");
     checkQuery.bindValue(":email", email);
-    checkQuery.bindValue(":pass", pass);
+    checkQuery.bindValue(":pass", hashedPass);
     if (checkQuery.exec()){
         if (checkQuery.next()){
             exists = true;

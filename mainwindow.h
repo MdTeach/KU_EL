@@ -37,8 +37,6 @@ private slots:
 
     void on_aboutButton_clicked();
 
-    void on_pushButton_register_clicked();
-
     void on_adminButton_clicked();
 
     void on_userButton_clicked();

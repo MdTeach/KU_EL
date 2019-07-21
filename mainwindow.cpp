@@ -19,14 +19,6 @@ MainWindow::MainWindow(QWidget *parent) :
     QMovie *movie = new QMovie(":/images/img/clothes.gif");
     ui->welcomeLabel->setMovie(movie);
     movie->start();
-
-//    DbManager db("database.db");
-//    if(!db.isOpen()){
-//        qDebug()<<"Database not opening";
-//    }else{
-//        db.createTable();   // Creates a table if it doens't exist. Otherwise, it will use existing table.
-//        db.printAllUsers();
-//    }
 }
 
 MainWindow::~MainWindow()
@@ -64,13 +56,6 @@ void MainWindow::on_pushButton_Login_clicked()
 
 }
 
-//void MainWindow::on_pushButton_Login_2_clicked()
-//{
-//    hide();
-//    userRegister = new UserRegister(this);
-//    userRegister->show();
-//}
-
 void MainWindow::on_homeButton_clicked()
 {
     ui->mainStack->setCurrentIndex(0);
@@ -89,11 +74,6 @@ void MainWindow::on_registerButton_clicked()
 void MainWindow::on_aboutButton_clicked()
 {
     ui->mainStack->setCurrentIndex(3);
-}
-
-void MainWindow::on_pushButton_register_clicked()
-{
-
 }
 
 void MainWindow::showMessage(MainWindow *context, const QString message){
@@ -134,7 +114,9 @@ void MainWindow::on_registerButton_2_clicked()
     //QString pass1 = ui->Password->text();
     QString pass2 = ui->Password_re->text();
 
-    //DataValidation
+    // Regular Expression
+    QRegExp re("\\d*");
+    // DataValidation
     if(isEmpty(fName)){
         this->showMessage(this, "Firstname field is empty");
     }else if(isEmpty(lName)){
@@ -143,8 +125,8 @@ void MainWindow::on_registerButton_2_clicked()
         this->showMessage(this, "Email field is empty");
     }else if(isEmpty(addr)){
         this->showMessage(this, "Address field is empty");
-    }else if(isEmpty(phn)){
-        this->showMessage(this, "Phone field is empty");
+    }else if(!re.exactMatch(phn)){
+        this->showMessage(this, "Phone not entered correctly.");
     }else if(isEmpty(pass1)){
         this->showMessage(this, "Password 1 field is empty");
     }else if(isEmpty(pass2)){
