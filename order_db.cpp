@@ -78,8 +78,37 @@ QList<QList<QString>> Order_db::getAllData()const{
     return data;
 }
 
-QList<QList<QString>> Order_db::getUserOrdersData(QString uemail){
-    return  0;
+QList<QList<QString>> Order_db::getUserData(QString uemail){
+    QSqlQuery query("SELECT * FROM orders");
+
+    int userEmail_id = query.record().indexOf("userEmail");
+    int orderDate_id = query.record().indexOf("orderDate");
+    int orderList_id = query.record().indexOf("orderList");
+    int orderStatus_id = query.record().indexOf("orderStatus");
+
+    QList<QList<QString>> data;
+    while (query.next()){
+        QList<QString> list;
+
+        QString userEmail = query.value(userEmail_id).toString();
+        QString orderDate = query.value(orderDate_id).toString();
+        QString orderList = query.value(orderList_id).toString();
+        QString orderStatus = query.value(orderStatus_id).toString();
+
+        list.push_front(orderStatus);
+        list.push_front(orderList);
+        list.push_front(orderDate);
+        list.push_front(userEmail);
+
+        if(userEmail == uemail){
+            data.push_front(list);
+        }
+    }
+    return data;
 }
+
+//QList<QList<QString>> Order_db::getUserOrdersData(QString uemail){
+//    return  0;
+//}
 
 

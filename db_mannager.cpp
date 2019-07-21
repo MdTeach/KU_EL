@@ -4,6 +4,8 @@
 #include <QSqlRecord>
 #include <QDebug>
 
+
+
 DbManager::DbManager(const QString &path)
 {
     m_db = QSqlDatabase::addDatabase("QSQLITE");
