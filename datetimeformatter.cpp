@@ -22,7 +22,7 @@ QString DateTimeFormatter::monthIndex(QString rawDate){
 
 QString DateTimeFormatter::getFormattedDate(QString rawDate){
     QStringList pieces = rawDate.split( " " );
-    QString formattedDate = "M"+monthIndex(pieces[1])+"d"+pieces[2]+"y"+pieces[3]+" "+pieces[4];
+    QString formattedDate = "M"+monthIndex(pieces[1])+"d"+pieces[2]+"y"+pieces[3]+" "+pieces[5];
     QDateTime dateTime2 = QDateTime::fromString(formattedDate,"'M'M'd'd'y'yyyy hh:mm:ss");
     return  formattedDate;
 }
@@ -47,7 +47,6 @@ QList<QList<uint>> DateTimeFormatter::sortByDate(QList<QString> dates, uint coun
 
 
 QList<QList<uint>> DateTimeFormatter::getArragnedDatas(QList<uint> datas, uint separation){
-    qDebug()<<datas;
     QList<QList<uint>> arranged_datas = QList<QList<uint>>();
     int index = 0;
     uint phase = datas[0]+separation/60;

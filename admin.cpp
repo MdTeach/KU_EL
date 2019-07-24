@@ -5,8 +5,8 @@
 
 #include <db_mannager.h>
 #include <admin_db.h>
-#include<order_db.h>
-
+#include <order_db.h>
+#include <datetimeformatter.h>
 #include <QList>
 
 Admin::Admin(QWidget *parent) :
@@ -221,7 +221,6 @@ void Admin::on_reoveItemButton_clicked()
         }else{
             //remove the data
             admin_db.removeItem(itemName);
-
             this->close();
             QWidget *parent = this->parentWidget();
             parent->show();
@@ -255,8 +254,23 @@ void Admin::on_pushButton_2_clicked()
 }
 
 void Admin::showAnalitics(){
+
+    //TODO::need to get some order datas that we might already have:
+    Order_db order_db("database.db");
+    QList<QList<QString>> datas = order_db.getAllData();
+
+    QList<QString> dates;
+    for(int i=0;i<datas.length();i++){
+        dates.append(datas[i][1]);
+    }
+
+    DateTimeFormatter df;
+    QList<QList<uint>> formatted_date = df.sortByDate(dates,60);
+    qDebug()<<formatted_date;
+
     QCustomPlot* customPlot = ui->customPlot;
     customPlot->setBackground(QColor(255, 0, 102).lighter(130));
+
 
     // create empty bar chart objects:
     QCPBars *orders = new QCPBars(customPlot->xAxis, customPlot->yAxis);
@@ -273,6 +287,7 @@ void Admin::showAnalitics(){
     QVector<QString> labels;
     ticks << 1 << 2 << 3 << 4 << 5 << 6 << 7;
     labels << "USA" << "Japan" << "Germany" << "France" << "UK" << "Italy" << "Canada";
+
     QSharedPointer<QCPAxisTickerText> textTicker(new QCPAxisTickerText);
     textTicker->addTicks(ticks, labels);
     customPlot->xAxis->setTicker(textTicker);
@@ -285,6 +300,7 @@ void Admin::showAnalitics(){
     customPlot->xAxis->grid()->setVisible(true);
     customPlot->xAxis->grid()->setPen(QPen(QColor(130, 130, 130), 0, Qt::DotLine));
     customPlot->xAxis->setTickLabelColor(Qt::white);
+    customPlot->xAxis->setLabel("Time in last seconds");
     customPlot->xAxis->setLabelColor(Qt::white);
 
     // prepare y axis:
