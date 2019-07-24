@@ -107,8 +107,5 @@ QList<QList<QString>> Order_db::getUserData(QString uemail){
     return data;
 }
 
-//QList<QList<QString>> Order_db::getUserOrdersData(QString uemail){
-//    return  0;
-//}
 
 

@@ -33,14 +33,19 @@ uint DateTimeFormatter::getUnixTimeStamp(QString rawDate){
     return  unixtime;
 }
 
-QList<QList<uint>> DateTimeFormatter::sortByDate(QList<QString> dates, uint counter){
-    uint latest = getUnixTimeStamp(dates[0]);
+QList<QList<uint>> DateTimeFormatter::sortByDate(QList<QString> dates, uint counter, QString latestDate){
+    uint latest = getUnixTimeStamp(latestDate);
+
     QList<uint> lastMinutesDatas;
     for(int i=0;i<dates.length();i++){
         uint times = getUnixTimeStamp(dates[i]);
-            if(times <= latest+counter){
+            if(times >= latest-counter){
                 lastMinutesDatas.append(times);
             }
+    }
+    if(lastMinutesDatas.length()==0){
+        QList<QList<uint>> empty = {{}};
+        return  empty;
     }
     return getArragnedDatas(lastMinutesDatas,counter);
 }
