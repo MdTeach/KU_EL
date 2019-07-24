@@ -27,6 +27,7 @@ CONFIG += c++11
 SOURCES += \
         admin.cpp \
         admin_db.cpp \
+        datetimeformatter.cpp \
         db_mannager.cpp \
         main.cpp \
         mainwindow.cpp \
@@ -37,6 +38,7 @@ SOURCES += \
 HEADERS += \
         admin.h \
         admin_db.h \
+        datetimeformatter.h \
         db_mannager.h \
         mainwindow.h \
         order_db.h \
