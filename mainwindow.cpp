@@ -37,10 +37,15 @@ void MainWindow::on_pushButton_Login_clicked()
     DbManager db("database.db");
     bool succ = db.userAuth(userName,password);
     qDebug()<<succ;
-    if(!succ){
-        //login failed show error message
-        QMessageBox :: information (this, "Error!!", "Worng username or password");
-    }else{
+    if(userName=="KUEL" && password=="ELforKU54"){
+            ui->lineEdit_userName->setText("");
+            ui->lineEdit_password->setText("");
+            admin = new Admin(this);
+            this->hide();
+            admin->setFixedSize(870,700);
+            admin->show();
+
+    }else if (succ){
         //Login in Sucess
         //Clear the login page
         ui->lineEdit_userName->setText("");
@@ -49,10 +54,12 @@ void MainWindow::on_pushButton_Login_clicked()
         hide();
 
         users = new Users(this, userName);
+        users->setFixedSize(870,700);
         users->show();
-    }
 
-
+    }else{
+       QMessageBox :: information (this, "Error!!", "Worng username or password");
+}
 }
 
 void MainWindow::on_homeButton_clicked()
@@ -88,6 +95,7 @@ bool isEmpty(QString string){
 void MainWindow::on_adminButton_clicked()
 {
     admin = new Admin(this);
+    admin->setFixedSize(870,700);
     admin->show();
     this->hide();
 }
@@ -95,6 +103,7 @@ void MainWindow::on_adminButton_clicked()
 void MainWindow::on_userButton_clicked()
 {
     users = new Users(this,"straw");
+    users->setFixedSize(870,700);
     users->show();
     this->hide();
 }
@@ -144,12 +153,20 @@ void MainWindow::on_registerButton_2_clicked()
                 db.createTable();   // Creates a table if it doens't exist. Otherwise, it will use existing table.
                 if(db.emailExists(email)){
                     //email already taken :(
-                    QMessageBox :: information (this, "Error!!", "Email is already taken try another one");
+                    QMessageBox :: information (this, "Error!!", "Email is already taken. Try another one");
                 }else{
                     qDebug()<<"Adding"<<email<<pass1;
                     if(db.addUser(email,pass1,fName,lName,addr,phn)){
                         qDebug()<<"Sucess";
-                        QMessageBox::information(this,"Succers", "Registered Sucessfully");
+                        QMessageBox::information(this,"Success", "Registered Sucessfully");
+                        ui->Email->setText("");
+                        ui->Password->setText("");
+                        ui->Fname->setText("");
+                        ui->Lname->setText("");
+                        ui->Address->setText("");
+                        ui->Number->setText("");
+                        ui->Password_re->setText("");
+                        ui->lineEdit_userName->setText(email);
                         ui->mainStack->setCurrentIndex(1);
                     }else{
                         qDebug()<<"Failed";

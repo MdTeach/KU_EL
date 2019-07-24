@@ -6,9 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>870</width>
-    <height>700</height>
+    <width>899</width>
+    <height>747</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>401</width>
+    <height>271</height>
+   </size>
+  </property>
+  <property name="sizeIncrement">
+   <size>
+    <width>401</width>
+    <height>271</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -131,7 +143,7 @@ border-radius:20px;
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>550</width>
+          <width>554</width>
           <height>481</height>
          </rect>
         </property>
@@ -533,7 +545,7 @@ color:white</string>
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="text">
-     <string>List of all Users</string>
+     <string>Users List</string>
     </property>
    </widget>
    <widget class="QPushButton" name="listOrderButton_2">
@@ -575,7 +587,7 @@ color:white</string>
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="text">
-     <string>Analitics</string>
+     <string>Analytics</string>
     </property>
    </widget>
   </widget>

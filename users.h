@@ -53,6 +53,8 @@ private:
     void setMyOrdersList();
     QList<QList <QString>> getFromattedList(QString rawData);
 
+    Users *users;
+
 };
 
 #endif // USERS_H

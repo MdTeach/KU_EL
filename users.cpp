@@ -180,8 +180,8 @@ void Users::on_confirmOrderButton_clicked()
 
         //End and exit
         this->close();
-        QWidget *parent = this->parentWidget();
-        parent->show();
+        users = new Users(this,"straw");
+        users->show();
     }
 }
 
