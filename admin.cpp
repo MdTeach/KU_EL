@@ -26,7 +26,7 @@ Admin::Admin(QWidget *parent) :
     addOrderList();
 
     //Showing analitics
-//    showAnalitics();
+    showAnalitics();
 
 
 }
@@ -259,83 +259,87 @@ void Admin::showAnalitics(){
 
     QList<QString> dates;
     for(int i=0;i<datas.length();i++){
-        dates.append(datas[i][1]);
+        dates.push_front(datas[i][1]);
     }
 
     DateTimeFormatter df;
-    QList<QList<uint>> formatted_date = df.sortByDate(dates,60);
+    QList<QList<uint>> formatted_date = df.sortByDate(dates,60*5);
     qDebug()<<dates;
     qDebug()<<formatted_date;
 
 
 
-//    QCustomPlot* customPlot = ui->customPlot;
-//    customPlot->setBackground(QColor(255, 0, 102).lighter(130));
+    QCustomPlot* customPlot = ui->customPlot;
+    customPlot->setBackground(QColor(255, 0, 102).lighter(130));
 
 
-//    // create empty bar chart objects:
-//    QCPBars *orders = new QCPBars(customPlot->xAxis, customPlot->yAxis);
-//    orders->setAntialiased(false); // gives more crisp, pixel aligned bar borders
+    // create empty bar chart objects:
+    QCPBars *orders = new QCPBars(customPlot->xAxis, customPlot->yAxis);
+    orders->setAntialiased(false); // gives more crisp, pixel aligned bar borders
 
-//    // set names and colors:
-//    orders->setName("Orders");
-//    orders->setPen(QPen(QColor(0, 168, 140).lighter(130)));
-//    orders->setBrush(QColor(0, 168, 140));
-//    // stack bars on top of each other:
+    // set names and colors:
+    orders->setName("Orders");
+    orders->setPen(QPen(QColor(0, 168, 140).lighter(130)));
+    orders->setBrush(QColor(0, 168, 140));
+    // stack bars on top of each other:
 
-//    // prepare x axis with country labels:
-//    QVector<double> ticks;
-//    QVector<double> ordersData;
+    // prepare x axis with country labels:
+    QVector<double> ticks;
+    QVector<double> ordersData;
 
-//    QVector<QString> labels;
+    QVector<QString> labels;
 
-//    for(int i = 0 ;i<formatted_date.length();i++){
-//        ticks.append(i);
-//        QString that_time = QDateTime::fromTime_t(formatted_date[i][0]).toString();
-//        QStringList hr_min_sec = that_time.split(":");
-//        labels.append(hr_min_sec[0]+" "+hr_min_sec[1]);
-//        ordersData.append(formatted_date[i].length());
-//    }
+    uint initalTime = formatted_date[0][0];
+    for(int i = 0 ;i<formatted_date.length();i++){
+        ticks.append(i);
+        QString that_time = QDateTime::fromTime_t(initalTime).toString();
+        labels.append(that_time);
+        initalTime+=30;
+        ordersData.append(formatted_date[i].length());
+    }
+
+    qDebug()<<ordersData;
 
 
 
-//    QSharedPointer<QCPAxisTickerText> textTicker(new QCPAxisTickerText);
-//    textTicker->addTicks(ticks, labels);
-//    customPlot->xAxis->setTicker(textTicker);
-//    customPlot->xAxis->setTickLabelRotation(60);
-//    customPlot->xAxis->setSubTicks(false);
-//    customPlot->xAxis->setTickLength(0, 4);
-//    customPlot->xAxis->setRange(0, 8);
-//    customPlot->xAxis->setBasePen(QPen(Qt::white));
-//    customPlot->xAxis->setTickPen(QPen(Qt::white));
-//    customPlot->xAxis->grid()->setVisible(true);
-//    customPlot->xAxis->grid()->setPen(QPen(QColor(130, 130, 130), 0, Qt::DotLine));
-//    customPlot->xAxis->setTickLabelColor(Qt::white);
-//    customPlot->xAxis->setLabel("Time in last seconds");
-//    customPlot->xAxis->setLabelColor(Qt::white);
+    QSharedPointer<QCPAxisTickerText> textTicker(new QCPAxisTickerText);
+    textTicker->addTicks(ticks, labels);
+    customPlot->xAxis->setTicker(textTicker);
+    customPlot->xAxis->setTickLabelRotation(60);
+    customPlot->xAxis->setSubTicks(false);
+    customPlot->xAxis->setTickLength(0, 4);
+    customPlot->xAxis->setPadding(20);
+    customPlot->xAxis->setRange(-1, 8);
+    customPlot->xAxis->setBasePen(QPen(Qt::white));
+    customPlot->xAxis->setTickPen(QPen(Qt::white));
+    customPlot->xAxis->grid()->setVisible(true);
+    customPlot->xAxis->grid()->setPen(QPen(QColor(130, 130, 130), 0, Qt::DotLine));
+    customPlot->xAxis->setTickLabelColor(Qt::white);
+    customPlot->xAxis->setLabel("Time in last seconds");
+    customPlot->xAxis->setLabelColor(Qt::white);
 
-//    // prepare y axis:
-//    customPlot->yAxis->setRange(0, 12);
-//    customPlot->yAxis->setPadding(5); // a bit more space to the left border
-//    customPlot->yAxis->setLabel("Orders by the user");
-//    customPlot->yAxis->setBasePen(QPen(Qt::white));
-//    customPlot->yAxis->setTickPen(QPen(Qt::white));
-//    customPlot->yAxis->setSubTickPen(QPen(Qt::white));
-//    customPlot->yAxis->grid()->setSubGridVisible(true);
-//    customPlot->yAxis->setTickLabelColor(Qt::white);
-//    customPlot->yAxis->setLabelColor(Qt::white);
-//    customPlot->yAxis->grid()->setPen(QPen(QColor(130, 130, 130), 0, Qt::SolidLine));
-//    customPlot->yAxis->grid()->setSubGridPen(QPen(QColor(130, 130, 130), 0, Qt::DotLine));
+    // prepare y axis:
+    customPlot->yAxis->setRange(0, 8);
+    customPlot->yAxis->setPadding(20); // a bit more space to the left border
+    customPlot->yAxis->setLabel("Orders by the user");
+    customPlot->yAxis->setBasePen(QPen(Qt::white));
+    customPlot->yAxis->setTickPen(QPen(Qt::white));
+    customPlot->yAxis->setSubTickPen(QPen(Qt::white));
+    customPlot->yAxis->grid()->setSubGridVisible(true);
+    customPlot->yAxis->setTickLabelColor(Qt::white);
+    customPlot->yAxis->setLabelColor(Qt::white);
+    customPlot->yAxis->grid()->setPen(QPen(QColor(130, 130, 130), 0, Qt::SolidLine));
+    customPlot->yAxis->grid()->setSubGridPen(QPen(QColor(130, 130, 130), 0, Qt::DotLine));
 
-//    orders->setData(ticks, ordersData);
+    orders->setData(ticks, ordersData);
 
-//    // setup legend:
-//    customPlot->legend->setVisible(true);
-//    customPlot->axisRect()->insetLayout()->setInsetAlignment(0, Qt::AlignTop|Qt::AlignHCenter);
-//    customPlot->legend->setBrush(QColor(255, 255, 255, 100));
-//    customPlot->legend->setBorderPen(Qt::NoPen);
-//    QFont legendFont = font();
-//    legendFont.setPointSize(10);
-//    customPlot->legend->setFont(legendFont);
-//    customPlot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
+    // setup legend:
+    customPlot->legend->setVisible(true);
+    customPlot->axisRect()->insetLayout()->setInsetAlignment(0, Qt::AlignTop|Qt::AlignHCenter);
+    customPlot->legend->setBrush(QColor(255, 255, 255, 100));
+    customPlot->legend->setBorderPen(Qt::NoPen);
+    QFont legendFont = font();
+    legendFont.setPointSize(10);
+    customPlot->legend->setFont(legendFont);
+    customPlot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
 }

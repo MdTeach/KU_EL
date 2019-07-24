@@ -49,20 +49,23 @@ QList<QList<uint>> DateTimeFormatter::sortByDate(QList<QString> dates, uint coun
 QList<QList<uint>> DateTimeFormatter::getArragnedDatas(QList<uint> datas, uint separation){
     QList<QList<uint>> arranged_datas = QList<QList<uint>>();
     int index = 0;
-    uint phase = datas[0]+separation/60;
+    uint phase = datas[0]+separation/10;
     while(true){
         QList<uint> same_data = {};
         for (int i=index;i<datas.length();i++){
             if(double(phase)-double(datas[i])>0){
                 same_data.append(datas[i]);
             }else{
-                phase+=separation/60;
+                //phase = datas[i] + separation/10;
+                phase+=30;
                 break;
             }
             index+=1;
         }
         if(same_data.length()>0){
           arranged_datas.append(same_data);
+        }else{
+            arranged_datas.append(same_data);
         }
         if(index >= datas.length()){
             break;
@@ -70,3 +73,4 @@ QList<QList<uint>> DateTimeFormatter::getArragnedDatas(QList<uint> datas, uint s
     }
     return arranged_datas;
 }
+
