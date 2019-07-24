@@ -30,7 +30,7 @@ QString DateTimeFormatter::getFormattedDate(QString rawDate){
 uint DateTimeFormatter::getUnixTimeStamp(QString rawDate){
     QDateTime dateTime2 = QDateTime::fromString(getFormattedDate(rawDate),"'M'M'd'd'y'yyyy hh:mm:ss");
     uint unixtime = dateTime2.toTime_t();
-    return  unixtime + 5*3600 + 45*60;
+    return  unixtime;
 }
 
 QList<QList<uint>> DateTimeFormatter::sortByDate(QList<QString> dates, uint counter){
