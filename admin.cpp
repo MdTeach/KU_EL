@@ -26,7 +26,7 @@ Admin::Admin(QWidget *parent) :
     addOrderList();
 
     //Showing analitics
-    showAnalitics();
+//    showAnalitics();
 
 
 }
