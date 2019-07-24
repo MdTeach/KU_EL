@@ -28,11 +28,15 @@ private slots:
 
     void on_reoveItemButton_clicked();
 
+    void on_pushButton_2_clicked();
+
 private:
     Ui::Admin *ui;
     void addUserList();
     void addItemList();
     void addOrderList();
+
+    void showAnalitics();
     QList<QList<QString>> getFromattedList(QString rawData);
     bool isEmpty(const QString& str)const;
 };

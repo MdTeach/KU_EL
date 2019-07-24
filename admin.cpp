@@ -14,7 +14,7 @@ Admin::Admin(QWidget *parent) :
     ui(new Ui::Admin)
 {
     ui->setupUi(this);
-
+    ui->stackedWidget->setCurrentIndex(3);
     //Adding the list of users
     addUserList();
 
@@ -23,6 +23,9 @@ Admin::Admin(QWidget *parent) :
 
     //Adding item to users orders
     addOrderList();
+
+    //Showing analitics
+    showAnalitics();
 
 
 }
@@ -243,4 +246,72 @@ QList<QList <QString>> Admin::getFromattedList(QString rawData){
         data.push_front(list_of_orders_string);
     }
     return data;
+}
+
+void Admin::on_pushButton_2_clicked()
+{
+    //Show analitics
+    ui->stackedWidget->setCurrentIndex(3);
+}
+
+void Admin::showAnalitics(){
+    QCustomPlot* customPlot = ui->customPlot;
+    customPlot->setBackground(QColor(255, 0, 102).lighter(130));
+
+    // create empty bar chart objects:
+    QCPBars *orders = new QCPBars(customPlot->xAxis, customPlot->yAxis);
+    orders->setAntialiased(false); // gives more crisp, pixel aligned bar borders
+
+    // set names and colors:
+    orders->setName("Orders");
+    orders->setPen(QPen(QColor(0, 168, 140).lighter(130)));
+    orders->setBrush(QColor(0, 168, 140));
+    // stack bars on top of each other:
+
+    // prepare x axis with country labels:
+    QVector<double> ticks;
+    QVector<QString> labels;
+    ticks << 1 << 2 << 3 << 4 << 5 << 6 << 7;
+    labels << "USA" << "Japan" << "Germany" << "France" << "UK" << "Italy" << "Canada";
+    QSharedPointer<QCPAxisTickerText> textTicker(new QCPAxisTickerText);
+    textTicker->addTicks(ticks, labels);
+    customPlot->xAxis->setTicker(textTicker);
+    customPlot->xAxis->setTickLabelRotation(60);
+    customPlot->xAxis->setSubTicks(false);
+    customPlot->xAxis->setTickLength(0, 4);
+    customPlot->xAxis->setRange(0, 8);
+    customPlot->xAxis->setBasePen(QPen(Qt::white));
+    customPlot->xAxis->setTickPen(QPen(Qt::white));
+    customPlot->xAxis->grid()->setVisible(true);
+    customPlot->xAxis->grid()->setPen(QPen(QColor(130, 130, 130), 0, Qt::DotLine));
+    customPlot->xAxis->setTickLabelColor(Qt::white);
+    customPlot->xAxis->setLabelColor(Qt::white);
+
+    // prepare y axis:
+    customPlot->yAxis->setRange(0, 12.1);
+    customPlot->yAxis->setPadding(5); // a bit more space to the left border
+    customPlot->yAxis->setLabel("Power Consumption in\nKilowatts per Capita (2007)");
+    customPlot->yAxis->setBasePen(QPen(Qt::white));
+    customPlot->yAxis->setTickPen(QPen(Qt::white));
+    customPlot->yAxis->setSubTickPen(QPen(Qt::white));
+    customPlot->yAxis->grid()->setSubGridVisible(true);
+    customPlot->yAxis->setTickLabelColor(Qt::white);
+    customPlot->yAxis->setLabelColor(Qt::white);
+    customPlot->yAxis->grid()->setPen(QPen(QColor(130, 130, 130), 0, Qt::SolidLine));
+    customPlot->yAxis->grid()->setSubGridPen(QPen(QColor(130, 130, 130), 0, Qt::DotLine));
+
+    // Add data:
+    QVector<double> ordersData;
+    ordersData   << 0.06*10.5 << 0.05*5.5 << 0.04*5.5 << 0.06*5.8 << 0.02*5.2 << 0.07*4.2 << 0.25*11.2;
+    orders->setData(ticks, ordersData);
+
+    // setup legend:
+    customPlot->legend->setVisible(true);
+    customPlot->axisRect()->insetLayout()->setInsetAlignment(0, Qt::AlignTop|Qt::AlignHCenter);
+    customPlot->legend->setBrush(QColor(255, 255, 255, 100));
+    customPlot->legend->setBorderPen(Qt::NoPen);
+    QFont legendFont = font();
+    legendFont.setPointSize(10);
+    customPlot->legend->setFont(legendFont);
+    customPlot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
 }
