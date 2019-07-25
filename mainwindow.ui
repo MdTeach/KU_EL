@@ -94,7 +94,7 @@ QMessageBox QLabel{
      <string notr="true">background-color: rgb(255, 85, 127);</string>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="homePage">
      <property name="styleSheet">
@@ -216,7 +216,7 @@ QMessageBox QLabel{
             <item>
              <widget class="QLabel" name="label">
               <property name="text">
-               <string>Email:</string>
+               <string>Login Id:</string>
               </property>
              </widget>
             </item>
@@ -331,7 +331,7 @@ backgrooundcolor:rgb(255, 255, 255);
               <item>
                <widget class="QLineEdit" name="Email">
                 <property name="placeholderText">
-                 <string>Email</string>
+                 <string>Login Id</string>
                 </property>
                </widget>
               </item>
@@ -523,11 +523,14 @@ providers.</string>
    <widget class="QPushButton" name="userButton">
     <property name="geometry">
      <rect>
-      <x>760</x>
-      <y>480</y>
+      <x>750</x>
+      <y>710</y>
       <width>111</width>
       <height>51</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>User</string>
@@ -536,8 +539,8 @@ providers.</string>
    <widget class="QPushButton" name="adminButton">
     <property name="geometry">
      <rect>
-      <x>760</x>
-      <y>540</y>
+      <x>670</x>
+      <y>710</y>
       <width>111</width>
       <height>51</height>
      </rect>
@@ -550,7 +553,7 @@ providers.</string>
     <property name="geometry">
      <rect>
       <x>540</x>
-      <y>-10</y>
+      <y>0</y>
       <width>321</width>
       <height>181</height>
      </rect>

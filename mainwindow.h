@@ -43,7 +43,6 @@ private slots:
 
     void on_registerButton_2_clicked();
 
-    void on_welcomeLabel_linkActivated(const QString &link);
 
 private:
     Ui::MainWindow *ui;
