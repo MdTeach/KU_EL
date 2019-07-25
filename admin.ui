@@ -51,7 +51,7 @@ background-color: rgb(162, 54, 81);
      <string notr="true">background-color: rgb(227, 0, 113);</string>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="stackOrders">
      <widget class="QFrame" name="frame_2">

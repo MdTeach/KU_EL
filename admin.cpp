@@ -193,8 +193,9 @@ void Admin::on_addDataButton_clicked()
             admin_db.addItem(itemName,itemCost);
 
             this->close();
-            QWidget *parent = this->parentWidget();
-            parent->show();
+            Admin *admin = new Admin(this);
+            admin->show();
+            ui->stackedWidget->setCurrentIndex(1);
         }
     }
 

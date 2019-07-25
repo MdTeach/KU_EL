@@ -39,6 +39,7 @@ private:
     void showAnalitics();
     QList<QList<QString>> getFromattedList(QString rawData);
     bool isEmpty(const QString& str)const;
+    Admin *admin;
 };
 
 #endif // ADMIN_H
